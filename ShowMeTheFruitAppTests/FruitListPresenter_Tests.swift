@@ -9,67 +9,7 @@
 import XCTest
 
 class FruitListPresenter_Tests: XCTestCase {
-    
-    //service need a mock service and real service
-    //mockservice just returns an hardcoded object
-    class MockFruitDataService: FruitDataService {
-        
-        func getFruit() -> Array<FruitItem?> {
-            let arrayOfFruitItems = [
-                FruitItem(fruitType: "mockApple", fruitPriceInPence: 149, fruitWeightInGrams: 120),
-                FruitItem(fruitType: "mockBanana", fruitPriceInPence: 129, fruitWeightInGrams: 80)
-            ]
-            return arrayOfFruitItems
-        }
-    }
-    
-    //presenter
-    class FruitListPresenter: FruitListPresenterProtocol {
-        private weak var fruitListViewDelegate: FruitListViewDelegate?
-        private let fruitDataService: FruitDataService
-        
-        required init(fruitListViewDelegate: FruitListViewDelegate?, fruitDataService: FruitDataService) {
-            self.fruitDataService = fruitDataService
-            self.fruitListViewDelegate = fruitListViewDelegate
-            showFruitList()
-        }
-        
-        
-        func showFruitList() {
-            let arrayOfFruitItems = fruitDataService.getFruit()
-            var arrayOfFruitTypes: Array<String?> = []
-            arrayOfFruitItems.forEach {
-                arrayOfFruitTypes.append($0?.fruitType)
-            }
-            self.fruitListViewDelegate?.setFruit(arrayOfFruitTypes: arrayOfFruitTypes)
-        }
-        
-    }
-    
-    //view
-    class MockFruitListView: FruitListViewDelegate {
-        
-        fileprivate var fruitListPresenter: FruitListPresenter!
-        fileprivate var arrayOfFruitTypes: Array<String?> = []
-        
-        var fruitTypeLabelForIndex1: String = ""
-        var fruitTypeLabelForIndex2: String = ""
-        var fruitTypeLabelForIndex3: String = ""
-        
-        func setFruit(arrayOfFruitTypes: Array<String?>) {
-            self.arrayOfFruitTypes = arrayOfFruitTypes
-            if arrayOfFruitTypes.count != 0 {
-                fruitTypeLabelForIndex1 = arrayOfFruitTypes[0] ?? ""
-                fruitTypeLabelForIndex2 = arrayOfFruitTypes[1] ?? ""
-                fruitTypeLabelForIndex3 = ""
-            } else {
-                fruitTypeLabelForIndex1 =  ""
-                fruitTypeLabelForIndex2 =  ""
-                fruitTypeLabelForIndex3 =  ""
-            }
-            
-        }
-    }
+
     
     func testWhenMockScreenIsNavigatedToAFruitNameIsDisplayed() {
                 
@@ -119,16 +59,9 @@ class FruitListPresenter_Tests: XCTestCase {
 }
 
 
-protocol FruitListViewDelegate: class {
-    func setFruit(arrayOfFruitTypes: Array<String?>)
-}
 
 
-protocol FruitDataService {
-    func getFruit() -> Array<FruitItem?>
-}
 
-protocol FruitListPresenterProtocol {
-    init(fruitListViewDelegate: FruitListViewDelegate?, fruitDataService: FruitDataService)
-    func showFruitList()
-}
+
+
+

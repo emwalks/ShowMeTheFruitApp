@@ -18,6 +18,18 @@
 		9864772A23EDCEE300255C9D /* FruitListPresenter_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9864772923EDCEE300255C9D /* FruitListPresenter_Tests.swift */; };
 		9864772D23EDDBDB00255C9D /* FruitItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9864772C23EDDBDB00255C9D /* FruitItem.swift */; };
 		9864772E23EDDBF100255C9D /* FruitItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9864772C23EDDBDB00255C9D /* FruitItem.swift */; };
+		9864773023EE031A00255C9D /* FruitListPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9864772F23EE031A00255C9D /* FruitListPresenterProtocol.swift */; };
+		9864773223EE035100255C9D /* FruitDataServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9864773123EE035100255C9D /* FruitDataServiceProtocol.swift */; };
+		9864773323EE036A00255C9D /* FruitDataServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9864773123EE035100255C9D /* FruitDataServiceProtocol.swift */; };
+		9864773423EE036F00255C9D /* FruitListPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9864772F23EE031A00255C9D /* FruitListPresenterProtocol.swift */; };
+		9864773623EE03BB00255C9D /* FruitListViewDelegateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9864773523EE03BB00255C9D /* FruitListViewDelegateProtocol.swift */; };
+		9864773723EE03CA00255C9D /* FruitListViewDelegateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9864773523EE03BB00255C9D /* FruitListViewDelegateProtocol.swift */; };
+		9864773923EE040E00255C9D /* MockFruitDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9864773823EE040E00255C9D /* MockFruitDataService.swift */; };
+		9864773B23EE043F00255C9D /* FruitListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9864773A23EE043F00255C9D /* FruitListPresenter.swift */; };
+		9864773C23EE044600255C9D /* MockFruitDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9864773823EE040E00255C9D /* MockFruitDataService.swift */; };
+		9864773D23EE045D00255C9D /* FruitListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9864773A23EE043F00255C9D /* FruitListPresenter.swift */; };
+		9864773F23EE047200255C9D /* MockFruitListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9864773E23EE047200255C9D /* MockFruitListView.swift */; };
+		9864774023EE049000255C9D /* MockFruitListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9864773E23EE047200255C9D /* MockFruitListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +66,12 @@
 		9864771C23EDCA2A00255C9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9864772923EDCEE300255C9D /* FruitListPresenter_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitListPresenter_Tests.swift; sourceTree = "<group>"; };
 		9864772C23EDDBDB00255C9D /* FruitItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitItem.swift; sourceTree = "<group>"; };
+		9864772F23EE031A00255C9D /* FruitListPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitListPresenterProtocol.swift; sourceTree = "<group>"; };
+		9864773123EE035100255C9D /* FruitDataServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitDataServiceProtocol.swift; sourceTree = "<group>"; };
+		9864773523EE03BB00255C9D /* FruitListViewDelegateProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitListViewDelegateProtocol.swift; sourceTree = "<group>"; };
+		9864773823EE040E00255C9D /* MockFruitDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFruitDataService.swift; sourceTree = "<group>"; };
+		9864773A23EE043F00255C9D /* FruitListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitListPresenter.swift; sourceTree = "<group>"; };
+		9864773E23EE047200255C9D /* MockFruitListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFruitListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +166,12 @@
 			isa = PBXGroup;
 			children = (
 				9864772C23EDDBDB00255C9D /* FruitItem.swift */,
+				9864773123EE035100255C9D /* FruitDataServiceProtocol.swift */,
+				9864773823EE040E00255C9D /* MockFruitDataService.swift */,
+				9864772F23EE031A00255C9D /* FruitListPresenterProtocol.swift */,
+				9864773A23EE043F00255C9D /* FruitListPresenter.swift */,
+				9864773523EE03BB00255C9D /* FruitListViewDelegateProtocol.swift */,
+				9864773E23EE047200255C9D /* MockFruitListView.swift */,
 			);
 			path = FruitListModule;
 			sourceTree = "<group>";
@@ -283,9 +307,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9864773623EE03BB00255C9D /* FruitListViewDelegateProtocol.swift in Sources */,
+				9864773F23EE047200255C9D /* MockFruitListView.swift in Sources */,
+				9864773023EE031A00255C9D /* FruitListPresenterProtocol.swift in Sources */,
 				986476FD23EDCA2900255C9D /* ViewController.swift in Sources */,
+				9864773B23EE043F00255C9D /* FruitListPresenter.swift in Sources */,
 				986476F923EDCA2900255C9D /* AppDelegate.swift in Sources */,
+				9864773923EE040E00255C9D /* MockFruitDataService.swift in Sources */,
 				986476FB23EDCA2900255C9D /* SceneDelegate.swift in Sources */,
+				9864773223EE035100255C9D /* FruitDataServiceProtocol.swift in Sources */,
 				9864772D23EDDBDB00255C9D /* FruitItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -294,8 +324,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9864773423EE036F00255C9D /* FruitListPresenterProtocol.swift in Sources */,
+				9864773D23EE045D00255C9D /* FruitListPresenter.swift in Sources */,
+				9864773323EE036A00255C9D /* FruitDataServiceProtocol.swift in Sources */,
+				9864773723EE03CA00255C9D /* FruitListViewDelegateProtocol.swift in Sources */,
+				9864773C23EE044600255C9D /* MockFruitDataService.swift in Sources */,
 				9864771023EDCA2A00255C9D /* ShowMeTheFruitAppTests.swift in Sources */,
 				9864772A23EDCEE300255C9D /* FruitListPresenter_Tests.swift in Sources */,
+				9864774023EE049000255C9D /* MockFruitListView.swift in Sources */,
 				9864772E23EDDBF100255C9D /* FruitItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
