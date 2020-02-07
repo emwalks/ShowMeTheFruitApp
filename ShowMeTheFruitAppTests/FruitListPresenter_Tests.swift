@@ -9,56 +9,83 @@
 import XCTest
 
 class FruitListPresenter_Tests: XCTestCase {
-        
+    
     func testWhenMockScreenIsNavigatedToAFruitNameIsDisplayed() {
-        //model
-
         
         //service need a mock service and real service
         //mockservice just returns an hardcoded object
         class MockFruitDataService: FruitDataService {
             
-            func getFruit(callBack:(FruitItem?) -> Void) {
+            func getFruit() -> FruitItem? {
                 let fruitItems = [FruitItem(fruitType: "mockApple", fruitPriceInPence: 149, fruitWeightInGrams: 120)]
-                callBack(fruitItems.first)
+                return fruitItems.first
             }
+        }
+        
+        
+        
+        //presenter
+        class FruitListPresenter: FruitListPresenterProtocol {
+            private weak var fruitListViewDelegate: FruitListViewDelegate?
+            private let fruitDataService: FruitDataService
+            
+            required init(fruitListViewDelegate: FruitListViewDelegate?, fruitDataService: FruitDataService) {
+                self.fruitDataService = fruitDataService
+                self.fruitListViewDelegate = fruitListViewDelegate
+                showFruitList()
+            }
+            
+   
+            func showFruitList() {
+                let fruitItem = fruitDataService.getFruit()
+                self.fruitListViewDelegate?.setFruit(description: fruitItem?.fruitType ?? "no fruit returned from service")
+            }
+            
         }
         
         //view
         class MockFruitListView: FruitListViewDelegate {
-            func displayFruit(description: String) {
-                
+           
+            var fruitListPresenter: FruitListPresenter!
+            
+            var fruitTypeLabel: String = ""
+            
+            func setFruit(description:(String)) {
+                fruitTypeLabel = description
             }
             
-                        
-        }
-    
-        //presenter
-        class FruitListPresenter {
-            //initialise with something that conforms to protocols of dataServoce and ViewDelegate
+            
         }
         
         
         //arrange (given)
         let mockFruitItem = FruitItem(fruitType: "mockApple", fruitPriceInPence: 149, fruitWeightInGrams: 120)
+       
         let mockFruitDataService = MockFruitDataService()
         let mockFruitListView = MockFruitListView()
+        let fruitListPresenter = FruitListPresenter(fruitListViewDelegate: mockFruitListView, fruitDataService: mockFruitDataService)
         //act (when)
-        let fruitListPresenter = FruitListPresenter()
+        mockFruitListView.fruitListPresenter = fruitListPresenter
+        
         //assert (then)
         let expectedResult = mockFruitItem.fruitType
-        let actualResult = fruitListPresenter.something
+        let actualResult = mockFruitListView.fruitTypeLabel
         
         XCTAssertEqual(expectedResult, actualResult)
         
     }
 }
-                
-protocol FruitListViewDelegate {
-    func displayFruit(description:String)
+
+protocol FruitListViewDelegate: class {
+    func setFruit(description:String)
 }
 
 
 protocol FruitDataService {
-    func getFruit(callBack:(FruitItem?))
+    func getFruit() -> FruitItem?
+}
+
+protocol FruitListPresenterProtocol {
+    init(fruitListViewDelegate: FruitListViewDelegate?, fruitDataService: FruitDataService)
+    func showFruitList()
 }
