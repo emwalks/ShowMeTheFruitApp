@@ -8,6 +8,7 @@
 
 import Foundation
 
+
 class FruitListPresenter: FruitListPresenterProtocol {
     private weak var fruitListViewDelegate: FruitListViewDelegateProtocol?
     private let fruitDataService: FruitDataServiceProtocol
@@ -39,7 +40,7 @@ class FruitListPresenter: FruitListPresenterProtocol {
                     arrayOfFruitTypes.append($0.type)
                 }
                 self?.fruitListViewDelegate?.setFruit(arrayOfFruitTypes: arrayOfFruitTypes)
-
+                
             }
         }
         
