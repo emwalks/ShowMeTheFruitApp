@@ -2,9 +2,10 @@
 
 An app to view details about fruit!
 
-Design pattern: MVP
+Compatible with iOS version 13.0 and above. 
+To refresh data pull down the fruit list screen.
 
-Architecture: MVP
+Design pattern: MVP
 
 IDE: Xcode 11.2
 
