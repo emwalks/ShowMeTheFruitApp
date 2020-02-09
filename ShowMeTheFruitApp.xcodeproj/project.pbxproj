@@ -30,6 +30,7 @@
 		9864774023EE049000255C9D /* MockFruitListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9864773E23EE047200255C9D /* MockFruitListView.swift */; };
 		9864774423EE0A3F00255C9D /* FruitDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9864774323EE0A3F00255C9D /* FruitDataService.swift */; };
 		9864774523EECE0A00255C9D /* FruitDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9864774323EE0A3F00255C9D /* FruitDataService.swift */; };
+		986477C823F0330B00255C9D /* FruitList_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986477C723F0330B00255C9D /* FruitList_UITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,8 @@
 		9864773A23EE043F00255C9D /* FruitListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitListPresenter.swift; sourceTree = "<group>"; };
 		9864773E23EE047200255C9D /* MockFruitListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFruitListView.swift; sourceTree = "<group>"; };
 		9864774323EE0A3F00255C9D /* FruitDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitDataService.swift; sourceTree = "<group>"; };
+		986477C623F0330B00255C9D /* ShowMeTheFruitAppUITests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ShowMeTheFruitAppUITests-Bridging-Header.h"; sourceTree = "<group>"; };
+		986477C723F0330B00255C9D /* FruitList_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitList_UITests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +147,8 @@
 			isa = PBXGroup;
 			children = (
 				9864771C23EDCA2A00255C9D /* Info.plist */,
+				986477C723F0330B00255C9D /* FruitList_UITests.swift */,
+				986477C623F0330B00255C9D /* ShowMeTheFruitAppUITests-Bridging-Header.h */,
 			);
 			path = ShowMeTheFruitAppUITests;
 			sourceTree = "<group>";
@@ -249,6 +254,7 @@
 					};
 					9864771523EDCA2A00255C9D = {
 						CreatedOnToolsVersion = 11.2.1;
+						LastSwiftMigration = 1120;
 						TestTargetID = 986476F423EDCA2900255C9D;
 					};
 				};
@@ -339,6 +345,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				986477C823F0330B00255C9D /* FruitList_UITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -575,6 +582,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y983APTU2S;
 				INFOPLIST_FILE = ShowMeTheFruitAppUITests/Info.plist;
@@ -585,6 +593,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.bbc.emma.walker02.ShowMeTheFruitAppUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ShowMeTheFruitAppUITests/ShowMeTheFruitAppUITests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = ShowMeTheFruitApp;
@@ -595,6 +605,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y983APTU2S;
 				INFOPLIST_FILE = ShowMeTheFruitAppUITests/Info.plist;
@@ -605,6 +616,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.bbc.emma.walker02.ShowMeTheFruitAppUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ShowMeTheFruitAppUITests/ShowMeTheFruitAppUITests-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = ShowMeTheFruitApp;
