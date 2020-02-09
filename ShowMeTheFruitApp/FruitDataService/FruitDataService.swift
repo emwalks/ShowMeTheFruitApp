@@ -14,6 +14,10 @@ enum FruitDataServiceError : Error {
 }
 
 class FruitDataService: FruitDataServiceProtocol {
+    func getFruitDetail(type: (String), callBack: (FruitItem?) -> Void) {
+        
+    }
+    
     func getFruit() -> Array<FruitItem?> {
         return [nil]
     }

@@ -9,5 +9,8 @@
 import Foundation
 
 protocol FruitDataServiceProtocol {
+    
     func getFruit() -> Array<FruitItem?>
+    func getFruitDetail(type:(String), callBack:(FruitItem?) -> Void)
+    
 }
