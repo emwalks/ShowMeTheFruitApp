@@ -9,16 +9,17 @@
 import XCTest
 
 class FruitListPresenter_Tests: XCTestCase {
-
+    
     
     func testWhenMockScreenIsNavigatedToAFruitNameIsDisplayed() {
-                
+        
         //arrange (given)
         let mockFruitItem = FruitItem(type: "mockApple", price: 149, weight: 120)
         
         let mockFruitDataService = MockFruitDataService()
         let mockFruitListView = MockFruitListView()
-        let fruitListPresenter = FruitListPresenter(fruitListViewDelegate: mockFruitListView, fruitDataService: mockFruitDataService)
+        let mockScreenNavigationController = MockScreenNavController()
+        let fruitListPresenter = FruitListPresenter(fruitListViewDelegate: mockFruitListView, fruitDataService: mockFruitDataService, screenNavigationController: mockScreenNavigationController)
         //act (when)
         mockFruitListView.fruitListPresenter = fruitListPresenter
         
@@ -36,7 +37,8 @@ class FruitListPresenter_Tests: XCTestCase {
         
         let mockFruitDataService = MockFruitDataService()
         let mockFruitListView = MockFruitListView()
-        let fruitListPresenter = FruitListPresenter(fruitListViewDelegate: mockFruitListView, fruitDataService: mockFruitDataService)
+        let mockScreenNavigationController = MockScreenNavController()
+        let fruitListPresenter = FruitListPresenter(fruitListViewDelegate: mockFruitListView, fruitDataService: mockFruitDataService, screenNavigationController: mockScreenNavigationController)
         //act (when)
         mockFruitListView.fruitListPresenter = fruitListPresenter
         
@@ -49,12 +51,24 @@ class FruitListPresenter_Tests: XCTestCase {
         
         let expectedResult3 = ""
         let actualResult3 = mockFruitListView.fruitTypeLabelForIndex3
-               
+        
         
         XCTAssertEqual(expectedResult1, actualResult1)
         XCTAssertEqual(expectedResult2, actualResult2)
         XCTAssertEqual(expectedResult3, actualResult3)
         
+    }
+    
+    func testThatTheFruitDetailScreenIsNavigatedToViaScreenNavController() {
+        
+        let mockFruitDataService = MockFruitDataService()
+        let mockFruitListView = MockFruitListView()
+        let mockScreenNavigationController = MockScreenNavController()
+        let fruitListPresenter = FruitListPresenter(fruitListViewDelegate: mockFruitListView, fruitDataService: mockFruitDataService, screenNavigationController: mockScreenNavigationController)
+        
+        fruitListPresenter.showFruitDetails()
+        
+        XCTAssertEqual(mockScreenNavigationController.fruitDetailScreen, true)
     }
 }
 

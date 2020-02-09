@@ -1,5 +1,5 @@
 //
-//  ScreenNavigator.swift
+//  FruitDetailViewDelegateProtocol.swift
 //  ShowMeTheFruitApp
 //
 //  Created by Emma Walker - TVandMobile Platforms - Core Engineering on 09/02/2020.
@@ -7,3 +7,7 @@
 //
 
 import Foundation
+
+protocol FruitDetailViewDelegateProtocol: class {
+   func setFruitDetail(fruitSelected: FruitItem?)
+}

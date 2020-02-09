@@ -10,12 +10,15 @@ import Foundation
 
 
 class FruitListPresenter: FruitListPresenterProtocol {
+   
     private weak var fruitListViewDelegate: FruitListViewDelegateProtocol?
     private let fruitDataService: FruitDataServiceProtocol
+    var screenNavigationController: ScreenNavigationControllerProtocol
     
-    required init(fruitListViewDelegate: FruitListViewDelegateProtocol?, fruitDataService: FruitDataServiceProtocol) {
+    required init(fruitListViewDelegate: FruitListViewDelegateProtocol?, fruitDataService: FruitDataServiceProtocol,  screenNavigationController: ScreenNavigationControllerProtocol) {
         self.fruitDataService = fruitDataService
         self.fruitListViewDelegate = fruitListViewDelegate
+        self.screenNavigationController = screenNavigationController
         showFruitList()
     }
     
@@ -32,5 +35,11 @@ class FruitListPresenter: FruitListPresenterProtocol {
         }
         
     }
+    
+     var fruitTypleSelected: String = ""
+    
+     func showFruitDetails(){
+        screenNavigationController.displayFruitDetailView(fruitTypleSelected)
+     }
     
 }

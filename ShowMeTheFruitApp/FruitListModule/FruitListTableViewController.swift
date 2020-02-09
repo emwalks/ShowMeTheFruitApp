@@ -23,18 +23,19 @@ class FruitListTableViewController: UITableViewController, FruitListViewDelegate
         self.arrayOfFruitTypes = arrayOfFruitTypes
     }
     
-    //    func userWantsToSeeRowAt(index: Int) -> String? {
-    //        return arrayOfFruitTypes[index]
-    //      }
+        func userWantsToSeeRowAt(index: Int) -> String? {
+            return arrayOfFruitTypes[index]
+          }
     
     var fruitListPresenter: FruitListPresenterProtocol? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
         //this view is passive? Should it know about the actual fruitDataService?
-        fruitListPresenter = FruitListPresenter(fruitListViewDelegate: self, fruitDataService: FruitDataService())
+        fruitListPresenter = FruitListPresenter(fruitListViewDelegate: self, fruitDataService: FruitDataService(), screenNavigationController: SegueNavigationController(self))
         tableView.accessibilityIdentifier = "FruitListTable"
-        tableView.refreshControl = refreshOfData
+        tableView.refreshControl = refreshData
+    
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
@@ -45,13 +46,11 @@ class FruitListTableViewController: UITableViewController, FruitListViewDelegate
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
         
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return arrayOfFruitTypes.count
     }
     
@@ -68,7 +67,7 @@ class FruitListTableViewController: UITableViewController, FruitListViewDelegate
         
     }
     
-    lazy var refreshOfData: UIRefreshControl? = {
+    lazy var refreshData: UIRefreshControl? = {
         let refreshControl = UIRefreshControl()
         refreshControl.tintColor = UIColor.systemBlue
         refreshControl.addTarget(self, action: #selector(reloadData), for: .valueChanged)
@@ -79,6 +78,14 @@ class FruitListTableViewController: UITableViewController, FruitListViewDelegate
         fruitListPresenter?.showFruitList()
         tableView.reloadData()
         refreshControl?.endRefreshing()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ViewFruitDetails" {
+            if let fruitDetailViewController = segue.destination as? FruitDetailViewController {
+                fruitDetailViewController.fruitTypeFromSegue = (sender as? String)!
+            }
+        }
     }
     
     

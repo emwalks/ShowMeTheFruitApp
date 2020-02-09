@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -38,10 +39,29 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Show Me The Fruit!" id="gbd-ta-8LR"/>
+                    <connections>
+                        <segue destination="cvz-Cv-owz" kind="show" identifier="ViewFruitDetails" id="jOh-kf-IsB"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LZ8-mD-Tbs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1513.0434782608697" y="134.59821428571428"/>
+        </scene>
+        <!--Fruit Details-->
+        <scene sceneID="wIj-uh-lhF">
+            <objects>
+                <viewController id="cvz-Cv-owz" customClass="FruitDetailViewController" customModule="ShowMeTheFruitApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DUP-Cu-r0v">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="sYP-CP-9zO"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Fruit Details" id="fcc-9i-J01"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z2U-Hk-yl5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2317" y="135"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="yHb-8F-xFV">

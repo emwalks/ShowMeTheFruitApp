@@ -24,6 +24,11 @@ class FruitList_UITests: XCTestCase {
 
     func testWhenFruitListScreenIsNavigatedToAListOfFruitIsDisplayed() {
         
+        let firstCell =  app.tables["logbookView"].cells.children(matching: .other).element(boundBy: 0)
+        let start = firstCell.coordinate(withNormalizedOffset: CGVector(dx: 0, dy: 1))
+        let finish = firstCell.coordinate(withNormalizedOffset: CGVector(dx: 0, dy: 6))
+        start.press(forDuration: 0, thenDragTo: finish)
+    
         XCTAssertTrue(app.tables["FruitListTable"].staticTexts["\(fruitNames[0])"].exists)
         XCTAssertTrue(app.tables["FruitListTable"].staticTexts["\(fruitNames[1])"].exists)
         XCTAssertTrue(app.tables["FruitListTable"].staticTexts["\(fruitNames[2])"].exists)

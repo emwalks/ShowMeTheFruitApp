@@ -12,43 +12,6 @@ class FruitDetailPresenter_Tests: XCTestCase {
     
     func testWhenMockShowDetailScreenIsNavigatedToTheFruitDetailsAreDisplayed() {
         
-        class FruitDetailPresenter {
-            
-            private weak var fruitDetailViewDelegate: FruitDetailViewDelegateProtocol?
-            private let fruitDataService: FruitDataServiceProtocol
-            
-           required init(fruitDetailViewDelegate: FruitDetailViewDelegateProtocol?, fruitDataService: FruitDataServiceProtocol) {
-               self.fruitDataService = fruitDataService
-               self.fruitDetailViewDelegate = fruitDetailViewDelegate
-           }
-            
-            func showFruitDetail(type: String) {
-               fruitDataService.getFruitDetail(type: type){ [weak self] fruit in
-
-                if let fruit = fruit {
-                        self?.fruitDetailViewDelegate?.setFruitDetail(fruitSelected: fruit)
-                     }
-                 }
-            }
-        }
-       
-        
-        class MockFruitDetailView: FruitDetailViewDelegateProtocol {
-            
-            var fruitDetailPresenter : FruitDetailPresenter!
-            var fruitSelected: FruitItem? = nil
-            
-            var fruitPriceLabel: Double = -1
-            var fruitWeightLabel: Double = -1
-            
-            func setFruitDetail(fruitSelected: FruitItem?) {
-                self.fruitSelected = fruitSelected
-                self.fruitPriceLabel = fruitSelected!.priceInPounds
-                self.fruitWeightLabel = fruitSelected!.weightInKilos
-            }
-        }
-        
-        
         //arrange (given)
         let mockFruitItemSelected = FruitItem(type: "mockApple", price: 149, weight: 120)
         
@@ -71,6 +34,3 @@ class FruitDetailPresenter_Tests: XCTestCase {
     
 }
 
-protocol FruitDetailViewDelegateProtocol: class {
-   func setFruitDetail(fruitSelected: FruitItem?)
-}

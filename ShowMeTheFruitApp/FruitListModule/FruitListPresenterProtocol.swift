@@ -10,7 +10,7 @@ import Foundation
 
 protocol FruitListPresenterProtocol {
     
-    init(fruitListViewDelegate: FruitListViewDelegateProtocol?, fruitDataService: FruitDataServiceProtocol)
+    init(fruitListViewDelegate: FruitListViewDelegateProtocol?, fruitDataService: FruitDataServiceProtocol, screenNavigationController: ScreenNavigationControllerProtocol)
     
     func showFruitList()
 }
