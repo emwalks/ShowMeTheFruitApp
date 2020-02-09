@@ -32,11 +32,8 @@ class FruitList_UITests: XCTestCase {
         XCTAssertTrue(app.tables["FruitListTable"].staticTexts["\(fruitNames[5])"].exists)
         XCTAssertTrue(app.tables["FruitListTable"].staticTexts["\(fruitNames[6])"].exists)
         XCTAssertTrue(app.tables["FruitListTable"].staticTexts["\(fruitNames[7])"].exists)
-        
         XCTAssertTrue(app.tables["FruitListTable"].staticTexts["\(fruitNames[8])"].exists)
-        
-        
-        
+    
     }
 
 }
