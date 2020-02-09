@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol FruitDataService {
+protocol FruitDataServiceProtocol {
     func getFruit() -> Array<FruitItem?>
 }

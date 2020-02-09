@@ -10,10 +10,13 @@ import Foundation
 
 struct FruitItem: Codable {
     
-           let fruitType: String
-           
-           let fruitPriceInPence: Int
-           
-           let fruitWeightInGrams: Int
-           
-       }
+    let fruitType: String
+    
+    let fruitPriceInPence: Int
+    
+    let fruitWeightInGrams: Int
+}
+
+struct FruitData: Decodable {
+    let fruit: [FruitItem]
+}

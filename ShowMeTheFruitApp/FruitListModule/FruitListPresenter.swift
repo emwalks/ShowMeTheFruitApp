@@ -9,10 +9,10 @@
 import Foundation
 
 class FruitListPresenter: FruitListPresenterProtocol {
-    private weak var fruitListViewDelegate: FruitListViewDelegate?
-    private let fruitDataService: FruitDataService
+    private weak var fruitListViewDelegate: FruitListViewDelegateProtocol?
+    private let fruitDataService: FruitDataServiceProtocol
     
-    required init(fruitListViewDelegate: FruitListViewDelegate?, fruitDataService: FruitDataService) {
+    required init(fruitListViewDelegate: FruitListViewDelegateProtocol?, fruitDataService: FruitDataServiceProtocol) {
         self.fruitDataService = fruitDataService
         self.fruitListViewDelegate = fruitListViewDelegate
         showFruitList()

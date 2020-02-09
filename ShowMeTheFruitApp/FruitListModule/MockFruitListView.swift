@@ -8,7 +8,7 @@
 
 import Foundation
 
-class MockFruitListView: FruitListViewDelegate {
+class MockFruitListView: FruitListViewDelegateProtocol {
     
     var fruitListPresenter: FruitListPresenter!
     fileprivate var arrayOfFruitTypes: Array<String?> = []

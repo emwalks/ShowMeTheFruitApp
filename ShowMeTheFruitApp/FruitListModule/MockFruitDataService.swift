@@ -8,7 +8,7 @@
 
 import Foundation
 
-class MockFruitDataService: FruitDataService {
+class MockFruitDataService: FruitDataServiceProtocol {
     
     func getFruit() -> Array<FruitItem?> {
         let arrayOfFruitItems = [

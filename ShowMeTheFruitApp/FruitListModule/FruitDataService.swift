@@ -1,5 +1,5 @@
 //
-//  FruitListPresenterProtocol.swift
+//  FruitDataService.swift
 //  ShowMeTheFruitApp
 //
 //  Created by Emma Walker - TVandMobile Platforms - Core Engineering on 07/02/2020.
@@ -8,9 +8,14 @@
 
 import Foundation
 
-protocol FruitListPresenterProtocol {
+
+class FruitDataService: FruitDataServiceProtocol {
     
-    init(fruitListViewDelegate: FruitListViewDelegateProtocol?, fruitDataService: FruitDataServiceProtocol)
     
-    func showFruitList()
+    func getFruit() -> Array<FruitItem?> {
+        
+        return [nil]
+    }
+    
 }
+

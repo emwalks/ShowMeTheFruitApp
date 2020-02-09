@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol FruitListViewDelegate: class {
+protocol FruitListViewDelegateProtocol: class {
     func setFruit(arrayOfFruitTypes: Array<String?>)
 }
