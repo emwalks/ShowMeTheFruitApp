@@ -23,7 +23,7 @@ class FruitListPresenter: FruitListPresenterProtocol {
         let arrayOfFruitItems = fruitDataService.getFruit()
         var arrayOfFruitTypes: Array<String?> = []
         arrayOfFruitItems.forEach {
-            arrayOfFruitTypes.append($0?.fruitType)
+            arrayOfFruitTypes.append($0?.type)
         }
         self.fruitListViewDelegate?.setFruit(arrayOfFruitTypes: arrayOfFruitTypes)
     }

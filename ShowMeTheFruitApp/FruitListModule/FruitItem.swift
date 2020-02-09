@@ -8,15 +8,18 @@
 
 import Foundation
 
-struct FruitItem: Codable {
-    
-    let fruitType: String
-    
-    let fruitPriceInPence: Int
-    
-    let fruitWeightInGrams: Int
+struct FruitData : Decodable {
+    var fruit : [FruitItem]
 }
 
-struct FruitData: Decodable {
-    let fruit: [FruitItem]
+struct FruitItem : Decodable {
+    var type : String
+    var price : Int
+    var weight : Int
+    var priceInPounds: Double {
+        get { return Double(price) / 100.0 }
+    }
+    var weightInKilos: Double {
+        get { return Double(weight) / 100.0 }
+    }
 }

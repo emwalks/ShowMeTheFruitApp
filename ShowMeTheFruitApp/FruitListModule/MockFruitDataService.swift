@@ -12,8 +12,8 @@ class MockFruitDataService: FruitDataServiceProtocol {
     
     func getFruit() -> Array<FruitItem?> {
         let arrayOfFruitItems = [
-            FruitItem(fruitType: "mockApple", fruitPriceInPence: 149, fruitWeightInGrams: 120),
-            FruitItem(fruitType: "mockBanana", fruitPriceInPence: 129, fruitWeightInGrams: 80)
+            FruitItem(type: "mockApple", price: 149, weight: 120),
+            FruitItem(type: "mockBanana", price: 129, weight: 80)
         ]
         return arrayOfFruitItems
     }

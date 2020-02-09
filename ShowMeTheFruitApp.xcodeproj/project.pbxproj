@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		986476F923EDCA2900255C9D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986476F823EDCA2900255C9D /* AppDelegate.swift */; };
 		986476FB23EDCA2900255C9D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986476FA23EDCA2900255C9D /* SceneDelegate.swift */; };
-		986476FD23EDCA2900255C9D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986476FC23EDCA2900255C9D /* ViewController.swift */; };
 		9864770023EDCA2900255C9D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 986476FE23EDCA2900255C9D /* Main.storyboard */; };
 		9864770223EDCA2900255C9D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9864770123EDCA2900255C9D /* Assets.xcassets */; };
 		9864770523EDCA2900255C9D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9864770323EDCA2900255C9D /* LaunchScreen.storyboard */; };
@@ -31,6 +30,7 @@
 		9864774423EE0A3F00255C9D /* FruitDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9864774323EE0A3F00255C9D /* FruitDataService.swift */; };
 		9864774523EECE0A00255C9D /* FruitDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9864774323EE0A3F00255C9D /* FruitDataService.swift */; };
 		986477C823F0330B00255C9D /* FruitList_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986477C723F0330B00255C9D /* FruitList_UITests.swift */; };
+		986477CA23F036E200255C9D /* FruitListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986477C923F036E200255C9D /* FruitListTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,7 +54,6 @@
 		986476F523EDCA2900255C9D /* ShowMeTheFruitApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShowMeTheFruitApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		986476F823EDCA2900255C9D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		986476FA23EDCA2900255C9D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		986476FC23EDCA2900255C9D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		986476FF23EDCA2900255C9D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9864770123EDCA2900255C9D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9864770423EDCA2900255C9D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -74,6 +73,7 @@
 		9864774323EE0A3F00255C9D /* FruitDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitDataService.swift; sourceTree = "<group>"; };
 		986477C623F0330B00255C9D /* ShowMeTheFruitAppUITests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ShowMeTheFruitAppUITests-Bridging-Header.h"; sourceTree = "<group>"; };
 		986477C723F0330B00255C9D /* FruitList_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitList_UITests.swift; sourceTree = "<group>"; };
+		986477C923F036E200255C9D /* FruitListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitListTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,7 +125,6 @@
 			isa = PBXGroup;
 			children = (
 				9864772B23EDDB5D00255C9D /* FruitListModule */,
-				986476FC23EDCA2900255C9D /* ViewController.swift */,
 				986476FE23EDCA2900255C9D /* Main.storyboard */,
 				9864770323EDCA2900255C9D /* LaunchScreen.storyboard */,
 				9864772823EDCA4300255C9D /* SupportingFiles */,
@@ -175,6 +174,7 @@
 				9864773A23EE043F00255C9D /* FruitListPresenter.swift */,
 				9864773523EE03BB00255C9D /* FruitListViewDelegateProtocol.swift */,
 				9864773E23EE047200255C9D /* MockFruitListView.swift */,
+				986477C923F036E200255C9D /* FruitListTableViewController.swift */,
 			);
 			path = FruitListModule;
 			sourceTree = "<group>";
@@ -313,9 +313,9 @@
 			files = (
 				9864773623EE03BB00255C9D /* FruitListViewDelegateProtocol.swift in Sources */,
 				9864774423EE0A3F00255C9D /* FruitDataService.swift in Sources */,
+				986477CA23F036E200255C9D /* FruitListTableViewController.swift in Sources */,
 				9864773F23EE047200255C9D /* MockFruitListView.swift in Sources */,
 				9864773023EE031A00255C9D /* FruitListPresenterProtocol.swift in Sources */,
-				986476FD23EDCA2900255C9D /* ViewController.swift in Sources */,
 				9864773B23EE043F00255C9D /* FruitListPresenter.swift in Sources */,
 				986476F923EDCA2900255C9D /* AppDelegate.swift in Sources */,
 				9864773923EE040E00255C9D /* MockFruitDataService.swift in Sources */,
