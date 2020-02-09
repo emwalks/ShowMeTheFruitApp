@@ -15,6 +15,7 @@ class FruitListPresenter: FruitListPresenterProtocol {
     required init(fruitListViewDelegate: FruitListViewDelegateProtocol?, fruitDataService: FruitDataServiceProtocol) {
         self.fruitDataService = fruitDataService
         self.fruitListViewDelegate = fruitListViewDelegate
+        showFruitList()
     }
     
     var listOfFruits = [FruitItem]()
@@ -38,7 +39,7 @@ class FruitListPresenter: FruitListPresenterProtocol {
                     arrayOfFruitTypes.append($0.type)
                 }
                 self?.fruitListViewDelegate?.setFruit(arrayOfFruitTypes: arrayOfFruitTypes)
-                
+
             }
         }
         

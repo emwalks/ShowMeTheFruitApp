@@ -33,7 +33,6 @@ class FruitListTableViewController: UITableViewController, FruitListViewDelegate
         super.viewDidLoad()
         //this view is passive? Should it know about the actual fruitDataService?
         fruitListPresenter = FruitListPresenter(fruitListViewDelegate: self, fruitDataService: FruitDataService())
-        fruitListPresenter?.showFruitList()
         tableView.accessibilityIdentifier = "FruitListTable"
       
         // Uncomment the following line to preserve selection between presentations
