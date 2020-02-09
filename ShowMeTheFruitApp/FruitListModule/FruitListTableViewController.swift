@@ -11,16 +11,23 @@ import Foundation
 
 class FruitListTableViewController: UITableViewController, FruitListViewDelegateProtocol {
     
+    var arrayOfFruitTypes: Array<String?> = []
+    
     func setFruit(arrayOfFruitTypes: Array<String?>) {
-        
+        self.arrayOfFruitTypes = arrayOfFruitTypes
     }
     
-
+    func userWantsToSeeRowAt(index: Int) -> String? {
+        return arrayOfFruitTypes[index]
+      }
+    
+    var fruitListPresenter: FruitListPresenterProtocol? = nil
+        
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-        getFruits()
-      
+        //this view is passive? Should it know about the actual fruitDataService?
+        fruitListPresenter = FruitListPresenter(fruitListViewDelegate: self, fruitDataService: FruitDataService())
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -32,7 +39,7 @@ class FruitListTableViewController: UITableViewController, FruitListViewDelegate
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
         
     }
 
@@ -41,24 +48,6 @@ class FruitListTableViewController: UITableViewController, FruitListViewDelegate
         return 0
     }
     
-    var listOfFruits = [FruitItem]()
-
-     func getFruits() {
-         FruitDataService.shared.getFruits { [weak self] (result) in
-             switch result {
-             case .failure(_):
-                 self?.listOfFruits = []
-             case .success(let fruits):
-                 print(fruits)
-                 print(fruits.first?.type)
-                 self?.listOfFruits = fruits
-                 print(self?.listOfFruits)
-                 print(self?.listOfFruits.first?.type)
-             }
-         }
-         
-     }
-
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)

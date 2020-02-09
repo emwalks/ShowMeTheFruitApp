@@ -14,26 +14,7 @@ enum FruitDataServiceError : Error {
 }
 
 class FruitDataService: FruitDataServiceProtocol {
-    
-    var listOfFruits = [FruitItem]()
-
-     func getFruit() -> Array<FruitItem?> {
-         FruitDataService.shared.getFruits { [weak self] (result) in
-             switch result {
-             case .failure(_):
-                 self?.listOfFruits = []
-             case .success(let fruits):
-                 print(fruits)
-                 print(fruits.first?.type)
-                 self?.listOfFruits = fruits
-                 print(self?.listOfFruits)
-                 print(self?.listOfFruits.first?.type)
-             }
-         }
-        return listOfFruits
-     }
-    
-    //private
+            
     init() {}
     static let shared = FruitDataService()
     
@@ -60,5 +41,23 @@ class FruitDataService: FruitDataServiceProtocol {
         }
         dataTask.resume()
     }
+    
+    var listOfFruits = [FruitItem]()
+
+     func getFruit() -> Array<FruitItem?> {
+         FruitDataService.shared.getFruits { [weak self] (result) in
+             switch result {
+             case .failure(_):
+                 self?.listOfFruits = []
+             case .success(let fruits):
+                 print(fruits)
+                 print(fruits.first?.type)
+                 self?.listOfFruits = fruits
+                 print(self?.listOfFruits)
+                 print(self?.listOfFruits.first?.type)
+             }
+         }
+        return listOfFruits
+     }
     
 }
