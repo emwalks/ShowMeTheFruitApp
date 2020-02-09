@@ -18,9 +18,19 @@ class FruitDataService: FruitDataServiceProtocol {
         
     }
     
-    func getFruit() -> Array<FruitItem?> {
-        return [nil]
-    }
+    var listOfFruits = [FruitItem]()
+    
+    func getFruits(callback:(Array<FruitItem?>) -> Void){
+        FruitDataService.shared.fetchFruitsFromURL { [weak self] (result) in
+            switch result {
+            case .failure(_):
+                self?.listOfFruits = []
+            case .success(let fruits):
+                self?.listOfFruits = fruits
+                }
+            }
+        callback(listOfFruits)
+        }
     
     
     init() {}
@@ -50,24 +60,4 @@ class FruitDataService: FruitDataServiceProtocol {
         dataTask.resume()
     }
     
-//    var listOfFruits = [FruitItem]()
-//
-//     func getFruit() -> Array<FruitItem?> {
-//         FruitDataService.shared.fetchFruitsFromURL { [weak self] (result) in
-//             switch result {
-//             case .failure(_):
-//                 self?.listOfFruits = []
-//             case .success(let fruits):
-//                 self?.listOfFruits = fruits
-//                 print(self?.listOfFruits)
-//                 print(self?.listOfFruits.first?.type)
-//                var arrayOfFruitTypes: Array<String?> = []
-//                self?.listOfFruits.forEach {
-//                    arrayOfFruitTypes.append($0.type)
-//                }
-//             }
-//         }
-//        return listOfFruits
-//     }
-
 }

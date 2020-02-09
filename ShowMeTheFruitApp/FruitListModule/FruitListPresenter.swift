@@ -19,30 +19,16 @@ class FruitListPresenter: FruitListPresenterProtocol {
         showFruitList()
     }
     
-    var listOfFruits = [FruitItem]()
     
     func showFruitList() {
-        let arrayOfFruitItems = fruitDataService.getFruit()
-        var arrayOfFruitTypes: Array<String?> = []
-        arrayOfFruitItems.forEach {
-            arrayOfFruitTypes.append($0?.type)
-        }
-        self.fruitListViewDelegate?.setFruit(arrayOfFruitTypes: arrayOfFruitTypes)
-        
-        FruitDataService.shared.fetchFruitsFromURL { [weak self] (result) in
-            switch result {
-            case .failure(_):
-                self?.listOfFruits = []
-            case .success(let fruits):
-                self?.listOfFruits = fruits
-                var arrayOfFruitTypes: Array<String?> = []
-                self?.listOfFruits.forEach {
-                    arrayOfFruitTypes.append($0.type)
-                }
-                print("showFruitList function has been called")
-                self?.fruitListViewDelegate?.setFruit(arrayOfFruitTypes: arrayOfFruitTypes)
-                
+        fruitDataService.getFruits { [weak self] fruits in
+            
+            var arrayOfFruitTypes: Array<String?> = []
+            fruits.forEach {
+                arrayOfFruitTypes.append($0?.type)
             }
+            print("showFruitList function has been called from getFruits")
+            self?.fruitListViewDelegate?.setFruit(arrayOfFruitTypes: arrayOfFruitTypes)
         }
         
     }

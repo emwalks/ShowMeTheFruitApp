@@ -9,13 +9,13 @@
 import Foundation
 
 class MockFruitDataService: FruitDataServiceProtocol {
-    
-    func getFruit() -> Array<FruitItem?> {
+        
+    func getFruits(callback:(Array<FruitItem?>) -> Void) {
         let arrayOfFruitItems = [
-            FruitItem(type: "mockApple", price: 149, weight: 120),
-            FruitItem(type: "mockBanana", price: 129, weight: 80)
-        ]
-        return arrayOfFruitItems
+                   FruitItem(type: "mockApple", price: 149, weight: 120),
+                   FruitItem(type: "mockBanana", price: 129, weight: 80)
+               ]
+        callback(arrayOfFruitItems)
     }
     
     func getFruitDetail(type:(String), callBack:(FruitItem?) -> Void) {
