@@ -12,10 +12,21 @@ class FruitDetailViewController: UIViewController, FruitDetailViewDelegateProtoc
     
     var fruitDetailPresenter : FruitDetailPresenter? = nil
     
-    var fruitTypeFromSegue: String = ""
+    var fruitTypeFromSegue: String = ""  {
+        didSet {
+              DispatchQueue.main.async {
+                self.reloadInputViews()
+              }
+          }
+    }
+    
+    var fruitPriceLabel: Double = -1
+    var fruitWeightLabel: Double = -1
     
     func setFruitDetail(fruitSelected: FruitItem?) {
-        
+        self.fruitTypeFromSegue = fruitSelected!.type
+        self.fruitPriceLabel = fruitSelected!.priceInPounds
+        self.fruitWeightLabel = fruitSelected!.weightInKilos
     }
     
 

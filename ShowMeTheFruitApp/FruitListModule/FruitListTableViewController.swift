@@ -23,10 +23,6 @@ class FruitListTableViewController: UITableViewController, FruitListViewDelegate
         self.arrayOfFruitTypes = arrayOfFruitTypes
     }
     
-        func userWantsToSeeRowAt(index: Int) -> String? {
-            return arrayOfFruitTypes[index]
-          }
-    
     var fruitListPresenter: FruitListPresenterProtocol? = nil
     
     override func viewDidLoad() {
@@ -78,6 +74,12 @@ class FruitListTableViewController: UITableViewController, FruitListViewDelegate
         fruitListPresenter?.showFruitList()
         tableView.reloadData()
         refreshControl?.endRefreshing()
+    }
+        
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        fruitListPresenter?.showFruitDetails(fruitTypeSelected: arrayOfFruitTypes[indexPath.row]!)
+ 
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

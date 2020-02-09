@@ -36,10 +36,8 @@ class FruitListPresenter: FruitListPresenterProtocol {
         
     }
     
-     var fruitTypleSelected: String = ""
-    
-     func showFruitDetails(){
-        screenNavigationController.displayFruitDetailView(fruitTypleSelected)
+    func showFruitDetails(fruitTypeSelected: String){
+        screenNavigationController.displayFruitDetailView(fruitTypeSelected)
      }
     
 }

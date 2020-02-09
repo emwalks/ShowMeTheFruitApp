@@ -24,7 +24,7 @@ class FruitList_UITests: XCTestCase {
 
     func testWhenFruitListScreenIsNavigatedToAListOfFruitIsDisplayed() {
         
-        let firstCell =  app.tables["logbookView"].cells.children(matching: .other).element(boundBy: 0)
+        let firstCell =  app.tables["FruitListTable"].cells.children(matching: .other).element(boundBy: 0)
         let start = firstCell.coordinate(withNormalizedOffset: CGVector(dx: 0, dy: 1))
         let finish = firstCell.coordinate(withNormalizedOffset: CGVector(dx: 0, dy: 6))
         start.press(forDuration: 0, thenDragTo: finish)
@@ -39,6 +39,15 @@ class FruitList_UITests: XCTestCase {
         XCTAssertTrue(app.tables["FruitListTable"].staticTexts["\(fruitNames[7])"].exists)
         XCTAssertTrue(app.tables["FruitListTable"].staticTexts["\(fruitNames[8])"].exists)
     
+    }
+    
+    func testWhenFruitIsSelectedTheFruitDetailScreenIsNavigatedTo() {
+        let mockFruitItem = ["apple", 1.49, 1.20] as [Any]
+        app.tables["FruitListTable"].staticTexts["apple"].tap()
+        
+        XCTAssertEqual(app.staticTexts.element(matching:.any, identifier: "pricePresented").label, "£ \(mockFruitItem[1])")
+        XCTAssertEqual(app.staticTexts.element(matching:.any, identifier: "weightPresented").label, "\(mockFruitItem[2]) kg")
+       
     }
 
 }

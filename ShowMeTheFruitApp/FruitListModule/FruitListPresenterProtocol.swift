@@ -13,4 +13,6 @@ protocol FruitListPresenterProtocol {
     init(fruitListViewDelegate: FruitListViewDelegateProtocol?, fruitDataService: FruitDataServiceProtocol, screenNavigationController: ScreenNavigationControllerProtocol)
     
     func showFruitList()
+    
+    func showFruitDetails(fruitTypeSelected: String)
 }
