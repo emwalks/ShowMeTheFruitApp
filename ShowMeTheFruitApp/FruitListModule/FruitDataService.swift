@@ -14,13 +14,17 @@ enum FruitDataServiceError : Error {
 }
 
 class FruitDataService: FruitDataServiceProtocol {
-            
+    func getFruit() -> Array<FruitItem?> {
+        return [nil]
+    }
+    
+    
     init() {}
     static let shared = FruitDataService()
     
     let fruitDataURL = "https://raw.githubusercontent.com/fmtvp/recruit-test-data/master/data.json"
     
-    func getFruits(completion: @escaping(Result<[FruitItem], FruitDataServiceError>) -> Void) {
+    func fetchFruitsFromURL(completion: @escaping(Result<[FruitItem], FruitDataServiceError>) -> Void) {
         
         guard let url = URL(string: fruitDataURL) else { fatalError("URL invalid") }
         let dataTask = URLSession.shared.dataTask(with: url) { (data, response, error) in
@@ -42,22 +46,24 @@ class FruitDataService: FruitDataServiceProtocol {
         dataTask.resume()
     }
     
-    var listOfFruits = [FruitItem]()
+//    var listOfFruits = [FruitItem]()
+//
+//     func getFruit() -> Array<FruitItem?> {
+//         FruitDataService.shared.fetchFruitsFromURL { [weak self] (result) in
+//             switch result {
+//             case .failure(_):
+//                 self?.listOfFruits = []
+//             case .success(let fruits):
+//                 self?.listOfFruits = fruits
+//                 print(self?.listOfFruits)
+//                 print(self?.listOfFruits.first?.type)
+//                var arrayOfFruitTypes: Array<String?> = []
+//                self?.listOfFruits.forEach {
+//                    arrayOfFruitTypes.append($0.type)
+//                }
+//             }
+//         }
+//        return listOfFruits
+//     }
 
-     func getFruit() -> Array<FruitItem?> {
-         FruitDataService.shared.getFruits { [weak self] (result) in
-             switch result {
-             case .failure(_):
-                 self?.listOfFruits = []
-             case .success(let fruits):
-                 print(fruits)
-                 print(fruits.first?.type)
-                 self?.listOfFruits = fruits
-                 print(self?.listOfFruits)
-                 print(self?.listOfFruits.first?.type)
-             }
-         }
-        return listOfFruits
-     }
-    
 }

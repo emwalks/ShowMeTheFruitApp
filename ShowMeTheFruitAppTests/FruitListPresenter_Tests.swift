@@ -14,7 +14,7 @@ class FruitListPresenter_Tests: XCTestCase {
     func testWhenMockScreenIsNavigatedToAFruitNameIsDisplayed() {
                 
         //arrange (given)
-        let mockFruitItem = FruitItem(fruitType: "mockApple", fruitPriceInPence: 149, fruitWeightInGrams: 120)
+        let mockFruitItem = FruitItem(type: "mockApple", price: 149, weight: 120)
         
         let mockFruitDataService = MockFruitDataService()
         let mockFruitListView = MockFruitListView()
@@ -23,7 +23,7 @@ class FruitListPresenter_Tests: XCTestCase {
         mockFruitListView.fruitListPresenter = fruitListPresenter
         
         //assert (then)
-        let expectedResult = mockFruitItem.fruitType
+        let expectedResult = mockFruitItem.type
         let actualResult = mockFruitListView.fruitTypeLabelForIndex1
         
         XCTAssertEqual(expectedResult, actualResult)
@@ -31,8 +31,8 @@ class FruitListPresenter_Tests: XCTestCase {
     }
     
     func testWhenMockScreenIsNavigatedToMultipleFruitNamesAreDisplayed() {
-        let mockFruitItem1 = FruitItem(fruitType: "mockApple", fruitPriceInPence: 149, fruitWeightInGrams: 120)
-        let mockFruitItem2 = FruitItem(fruitType: "mockBanana", fruitPriceInPence: 120, fruitWeightInGrams: 80)
+        let mockFruitItem1 =  FruitItem(type: "mockApple", price: 149, weight: 120)
+        let mockFruitItem2 =  FruitItem(type: "mockBanana", price: 149, weight: 120)
         
         let mockFruitDataService = MockFruitDataService()
         let mockFruitListView = MockFruitListView()
@@ -41,10 +41,10 @@ class FruitListPresenter_Tests: XCTestCase {
         mockFruitListView.fruitListPresenter = fruitListPresenter
         
         //assert (then)
-        let expectedResult1 = mockFruitItem1.fruitType
+        let expectedResult1 = mockFruitItem1.type
         let actualResult1 = mockFruitListView.fruitTypeLabelForIndex1
         
-        let expectedResult2 = mockFruitItem2.fruitType
+        let expectedResult2 = mockFruitItem2.type
         let actualResult2 = mockFruitListView.fruitTypeLabelForIndex2
         
         let expectedResult3 = ""

@@ -11,15 +11,21 @@ import Foundation
 
 class FruitListTableViewController: UITableViewController, FruitListViewDelegateProtocol {
     
-    var arrayOfFruitTypes: Array<String?> = []
+    var arrayOfFruitTypes: Array<String?> = [] {
+            didSet {
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            }
+        }
     
     func setFruit(arrayOfFruitTypes: Array<String?>) {
         self.arrayOfFruitTypes = arrayOfFruitTypes
     }
     
-    func userWantsToSeeRowAt(index: Int) -> String? {
-        return arrayOfFruitTypes[index]
-      }
+//    func userWantsToSeeRowAt(index: Int) -> String? {
+//        return arrayOfFruitTypes[index]
+//      }
     
     var fruitListPresenter: FruitListPresenterProtocol? = nil
         
@@ -27,7 +33,9 @@ class FruitListTableViewController: UITableViewController, FruitListViewDelegate
         super.viewDidLoad()
         //this view is passive? Should it know about the actual fruitDataService?
         fruitListPresenter = FruitListPresenter(fruitListViewDelegate: self, fruitDataService: FruitDataService())
-        
+        fruitListPresenter?.showFruitList()
+        tableView.accessibilityIdentifier = "FruitListTable"
+      
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -45,18 +53,22 @@ class FruitListTableViewController: UITableViewController, FruitListViewDelegate
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return arrayOfFruitTypes.count
     }
     
-    /*
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let fruitListCell = tableView.dequeueReusableCell(withIdentifier: "fruitListCell", for: indexPath)
+        
+        let fruit = arrayOfFruitTypes[indexPath.row]
+        fruitListCell.textLabel?.text = fruit
+        fruitListCell.textLabel?.accessibilityIdentifier = "cellTitleText"
+        
+        return fruitListCell
+        
 
-        // Configure the cell...
-
-        return cell
     }
-    */
+ 
 
     /*
     // Override to support conditional editing of the table view.

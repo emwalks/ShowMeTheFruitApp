@@ -15,9 +15,9 @@ class FruitListPresenter: FruitListPresenterProtocol {
     required init(fruitListViewDelegate: FruitListViewDelegateProtocol?, fruitDataService: FruitDataServiceProtocol) {
         self.fruitDataService = fruitDataService
         self.fruitListViewDelegate = fruitListViewDelegate
-        showFruitList()
     }
     
+    var listOfFruits = [FruitItem]()
     
     func showFruitList() {
         let arrayOfFruitItems = fruitDataService.getFruit()
@@ -26,6 +26,22 @@ class FruitListPresenter: FruitListPresenterProtocol {
             arrayOfFruitTypes.append($0?.type)
         }
         self.fruitListViewDelegate?.setFruit(arrayOfFruitTypes: arrayOfFruitTypes)
+        
+        FruitDataService.shared.fetchFruitsFromURL { [weak self] (result) in
+            switch result {
+            case .failure(_):
+                self?.listOfFruits = []
+            case .success(let fruits):
+                self?.listOfFruits = fruits
+                var arrayOfFruitTypes: Array<String?> = []
+                self?.listOfFruits.forEach {
+                    arrayOfFruitTypes.append($0.type)
+                }
+                self?.fruitListViewDelegate?.setFruit(arrayOfFruitTypes: arrayOfFruitTypes)
+                
+            }
+        }
+        
     }
     
 }
