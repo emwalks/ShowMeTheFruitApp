@@ -76,6 +76,7 @@ class FruitListTableViewController: UITableViewController, FruitListViewDelegate
     }()
     
     @objc func reloadData(){
+        fruitListPresenter?.showFruitList()
         tableView.reloadData()
         refreshControl?.endRefreshing()
     }

@@ -39,6 +39,7 @@ class FruitListPresenter: FruitListPresenterProtocol {
                 self?.listOfFruits.forEach {
                     arrayOfFruitTypes.append($0.type)
                 }
+                print("showFruitList function has been called")
                 self?.fruitListViewDelegate?.setFruit(arrayOfFruitTypes: arrayOfFruitTypes)
                 
             }
