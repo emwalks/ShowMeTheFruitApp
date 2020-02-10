@@ -54,14 +54,30 @@
                     <view key="view" contentMode="scaleToFill" id="DUP-Cu-r0v">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="st4-y6-cck">
+                                <rect key="frame" x="136" y="109" width="142" height="74"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="st4-y6-cck" firstAttribute="centerX" secondItem="sYP-CP-9zO" secondAttribute="centerX" id="5UO-5k-XlJ"/>
+                            <constraint firstItem="st4-y6-cck" firstAttribute="leading" secondItem="sYP-CP-9zO" secondAttribute="leading" constant="136" id="6ke-BF-AlL"/>
+                            <constraint firstItem="sYP-CP-9zO" firstAttribute="trailing" secondItem="st4-y6-cck" secondAttribute="trailing" constant="136" id="Hja-Iw-wdd"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="sYP-CP-9zO"/>
                     </view>
                     <navigationItem key="navigationItem" title="Fruit Details" id="fcc-9i-J01"/>
+                    <connections>
+                        <outlet property="fruitLabel" destination="st4-y6-cck" id="wBR-te-9is"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z2U-Hk-yl5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2317" y="135"/>
+            <point key="canvasLocation" x="2315.9420289855075" y="134.59821428571428"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="yHb-8F-xFV">

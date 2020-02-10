@@ -14,9 +14,22 @@ enum FruitDataServiceError : Error {
 }
 
 class FruitDataService: FruitDataServiceProtocol {
+    
+    var foundFruitItem: FruitItem? = nil
+    
     func getFruitDetail(type: (String), callBack: (FruitItem?) -> Void) {
-        
-    }
+        FruitDataService.shared.fetchFruitsFromURL { [weak self] (result) in
+            switch result {
+            case .failure(_):
+                self?.foundFruitItem = nil
+            case .success(let fruits):
+                self?.listOfFruits = fruits
+                self?.foundFruitItem = self?.listOfFruits.first(where: {$0.type == type})
+                print(self?.foundFruitItem)
+                }
+            }
+            callBack(foundFruitItem)
+        }
     
     var listOfFruits = [FruitItem]()
     
@@ -27,10 +40,10 @@ class FruitDataService: FruitDataServiceProtocol {
                 self?.listOfFruits = []
             case .success(let fruits):
                 self?.listOfFruits = fruits
-                }
             }
-        callback(listOfFruits)
         }
+        callback(listOfFruits)
+    }
     
     
     init() {}

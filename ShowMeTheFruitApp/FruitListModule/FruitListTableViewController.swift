@@ -65,7 +65,7 @@ class FruitListTableViewController: UITableViewController, FruitListViewDelegate
     
     lazy var refreshData: UIRefreshControl? = {
         let refreshControl = UIRefreshControl()
-        refreshControl.tintColor = UIColor.systemBlue
+        refreshControl.tintColor = UIColor.systemGray
         refreshControl.addTarget(self, action: #selector(reloadData), for: .valueChanged)
         return refreshControl
     }()

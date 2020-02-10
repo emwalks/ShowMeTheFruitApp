@@ -9,16 +9,19 @@
 import Foundation
 
 class MockFruitDetailView: FruitDetailViewDelegateProtocol {
-     
-     var fruitDetailPresenter : FruitDetailPresenter!
-     var fruitSelected: FruitItem? = nil
-     
-     var fruitPriceLabel: Double = -1
-     var fruitWeightLabel: Double = -1
-     
-     func setFruitDetail(fruitSelected: FruitItem?) {
-         self.fruitSelected = fruitSelected
-         self.fruitPriceLabel = fruitSelected!.priceInPounds
-         self.fruitWeightLabel = fruitSelected!.weightInKilos
-     }
- }
+    
+    var fruitTypeFromSegue: String = ""
+    
+    var fruitDetailPresenter : FruitDetailPresenter!
+    var fruitSelected: FruitItem? = nil
+    
+    var fruitPriceLabel: Double = -1
+    var fruitWeightLabel: Double = -1
+    
+    func setFruitDetail(fruitSelected: FruitItem?) {
+        self.fruitSelected = fruitSelected
+        self.fruitTypeFromSegue = fruitSelected!.type
+        self.fruitPriceLabel = fruitSelected!.priceInPounds
+        self.fruitWeightLabel = fruitSelected!.weightInKilos
+    }
+}
