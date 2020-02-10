@@ -19,15 +19,15 @@ class FruitDetailPresenter: FruitDetailPresenterProtocol {
         self.fruitDetailViewDelegate = fruitDetailViewDelegate
         showFruitDetail(type: fruitDetailViewDelegate!.fruitTypeFromSegue)
     }
-     
+    
     func showFruitDetail(type: String) {
-           fruitDataService.getFruitDetail(type: type){ [weak self] fruit in
+        fruitDataService.getFruitDetail(type: type){ [weak self] fruits in
             //something is wrong here!
-            if let fruit = fruit {
-                print("showFruit detail function is being called")
-                    self?.fruitDetailViewDelegate?.setFruitDetail(fruitSelected: fruit)
-                 }
-             }
+        
+            if let fruit = fruits {
+                self?.fruitDetailViewDelegate?.setFruitDetail(fruitSelected: fruit)
+            }
         }
     }
+}
 

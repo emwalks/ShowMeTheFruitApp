@@ -55,18 +55,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="st4-y6-cck">
-                                <rect key="frame" x="136" y="109" width="142" height="74"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="st4-y6-cck">
+                                <rect key="frame" x="136" y="109" width="142" height="20.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="st4-y6-cck" firstAttribute="top" secondItem="sYP-CP-9zO" secondAttribute="top" constant="21" id="4Ah-Oa-MUM"/>
                             <constraint firstItem="st4-y6-cck" firstAttribute="centerX" secondItem="sYP-CP-9zO" secondAttribute="centerX" id="5UO-5k-XlJ"/>
                             <constraint firstItem="st4-y6-cck" firstAttribute="leading" secondItem="sYP-CP-9zO" secondAttribute="leading" constant="136" id="6ke-BF-AlL"/>
                             <constraint firstItem="sYP-CP-9zO" firstAttribute="trailing" secondItem="st4-y6-cck" secondAttribute="trailing" constant="136" id="Hja-Iw-wdd"/>
+                            <constraint firstItem="sYP-CP-9zO" firstAttribute="bottom" secondItem="st4-y6-cck" secondAttribute="bottom" constant="732.5" id="rRn-7K-Dni"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="sYP-CP-9zO"/>
                     </view>

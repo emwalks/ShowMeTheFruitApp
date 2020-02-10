@@ -24,7 +24,6 @@ class FruitDataService: FruitDataServiceProtocol {
                 self?.foundFruitItem = nil
             case .success(let fruits):
                 self?.foundFruitItem = fruits.first(where: {$0.type == type})
-                print(self?.foundFruitItem)
                 }
             }
             callBack(foundFruitItem)
