@@ -41,7 +41,7 @@ class FruitDetailViewController: UIViewController, FruitDetailViewDelegateProtoc
     var fruitWeight: Double = -1.00
     
     func setFruitDetail(fruitSelected: FruitItem?) {
-        self.fruitTypeFromSegue = fruitSelected!.type
+        self.fruitTypeFromSegue = fruitSelected!.typeCapital
         self.fruitPrice = fruitSelected!.priceInPounds
         self.fruitWeight = fruitSelected!.weightInKilos
     }

@@ -16,10 +16,23 @@ struct FruitItem : Decodable {
     var type : String
     var price : Int
     var weight : Int
+    var typeCapital: String {
+        get {return type.capitalizingFirstLetter()}
+    }
     var priceInPounds: Double {
         get { return Double(price) / 100.0 }
     }
     var weightInKilos: Double {
         get { return Double(weight) / 1000.0 }
+    }
+}
+
+extension String {
+    func capitalizingFirstLetter() -> String {
+      return prefix(1).uppercased() + self.lowercased().dropFirst()
+    }
+
+    mutating func capitalizeFirstLetter() {
+      self = self.capitalizingFirstLetter()
     }
 }

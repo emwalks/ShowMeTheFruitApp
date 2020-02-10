@@ -52,7 +52,7 @@ class FruitListTableViewController: UITableViewController, FruitListViewDelegate
         let fruitListCell = tableView.dequeueReusableCell(withIdentifier: "fruitListCell", for: indexPath)
         
         let fruit = arrayOfFruitTypes[indexPath.row]
-        fruitListCell.textLabel?.text = fruit
+        fruitListCell.textLabel?.text = fruit?.capitalizingFirstLetter()
         fruitListCell.textLabel?.accessibilityIdentifier = "cellTitleText"
         
         return fruitListCell

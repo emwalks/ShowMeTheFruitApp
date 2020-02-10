@@ -18,7 +18,7 @@ class FruitList_UITests: XCTestCase {
         app.launch()
     }
     
-    let fruitNames = ["apple", "banana", "blueberry", "orange", "pear", "strawberry", "kumquat", "pitaya", "kiwi"]
+    let fruitNames = ["Apple", "Banana", "Blueberry", "Orange", "Pear", "Strawberry", "Kumquat", "Pitaya", "Kiwi"]
     
 
     func testWhenFruitListScreenIsNavigatedToAListOfFruitIsDisplayed() {
@@ -35,8 +35,8 @@ class FruitList_UITests: XCTestCase {
     }
     
     func testWhenFruitIsSelectedTheFruitDetailScreenIsNavigatedTo() {
-        let mockFruitItem = ["apple", 1.49, 1.20] as [Any]
-        app.tables["FruitListTable"].staticTexts["apple"].tap()
+        let mockFruitItem = ["Apple", 1.49, 0.12] as [Any]
+        app.tables["FruitListTable"].staticTexts["Apple"].tap()
         
         XCTAssertEqual(app.staticTexts.element(matching:.any, identifier: "pricePresented").label, "Price: £\(mockFruitItem[1])")
         XCTAssertEqual(app.staticTexts.element(matching:.any, identifier: "weightPresented").label, "Weight: \(mockFruitItem[2]) kg")
