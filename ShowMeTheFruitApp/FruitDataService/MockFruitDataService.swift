@@ -10,7 +10,7 @@ import Foundation
 
 class MockFruitDataService: FruitDataServiceProtocol {
         
-    func getFruits(callback:(Array<FruitItem?>) -> Void) {
+    func getFruits(callback:@escaping(Array<FruitItem?>) -> Void) {
         let arrayOfFruitItems = [
                    FruitItem(type: "mockApple", price: 149, weight: 120),
                    FruitItem(type: "mockBanana", price: 129, weight: 80)
@@ -18,7 +18,7 @@ class MockFruitDataService: FruitDataServiceProtocol {
         callback(arrayOfFruitItems)
     }
     
-    func getFruitDetail(type:(String), callBack:(FruitItem?) -> Void) {
+    func getFruitDetail(type: String, callBack:@escaping(FruitItem?) -> Void) {
         let arrayOfFruitItems = [
             FruitItem(type: "mockApple", price: 149, weight: 120),
             FruitItem(type: "mockBanana", price: 129, weight: 80)

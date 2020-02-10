@@ -13,11 +13,11 @@ enum FruitDataServiceError : Error {
     case fruitDataFailedProcessing
 }
 
-class FruitDataService: FruitDataServiceProtocol {
+class FruitDataService:FruitDataServiceProtocol  {
     
     var foundFruitItem: FruitItem? = nil
     
-    func getFruitDetail(type: (String), callBack: (FruitItem?) -> Void) {
+    func getFruitDetail(type: String, callBack: @escaping(FruitItem?) -> Void) {
         FruitDataService.shared.fetchFruitsFromURL { [weak self] (result) in
             switch result {
             case .failure(_):
@@ -25,14 +25,14 @@ class FruitDataService: FruitDataServiceProtocol {
             case .success(let fruits):
                 self?.foundFruitItem = fruits.first(where: {$0.type == type})
                 print(self?.foundFruitItem)
-                }
             }
-            callBack(foundFruitItem)
+            callBack(self?.foundFruitItem)
         }
+    }
     
-    var listOfFruits = [FruitItem]()
-    
-    func getFruits(callback:(Array<FruitItem?>) -> Void){
+    var listOfFruits: [FruitItem]?
+
+    func getFruits(callback: @escaping(Array<FruitItem?>) -> Void){
         FruitDataService.shared.fetchFruitsFromURL { [weak self] (result) in
             switch result {
             case .failure(_):
@@ -40,8 +40,8 @@ class FruitDataService: FruitDataServiceProtocol {
             case .success(let fruits):
                 self?.listOfFruits = fruits
             }
+            callback((self?.listOfFruits!)!)
         }
-        callback(listOfFruits)
     }
     
     

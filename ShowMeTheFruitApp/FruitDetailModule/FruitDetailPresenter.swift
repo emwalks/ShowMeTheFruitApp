@@ -21,12 +21,10 @@ class FruitDetailPresenter: FruitDetailPresenterProtocol {
     }
     
     func showFruitDetail(type: String) {
-        fruitDataService.getFruitDetail(type: type){ [weak self] fruits in
-            
+        fruitDataService.getFruitDetail(type: type) { [weak self] result in
             //something is wrong here! set Fruit detail never gets called in real life
-           
-            if let fruit = fruits {
-                self?.fruitDetailViewDelegate?.setFruitDetail(fruitSelected: fruit)
+            if let fruit = result {
+                self!.fruitDetailViewDelegate?.setFruitDetail(fruitSelected: fruit)
             }
         }
     }
