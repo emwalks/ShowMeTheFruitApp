@@ -18,16 +18,16 @@ class MockFruitDataService: FruitDataServiceProtocol {
         callback(arrayOfFruitItems)
     }
     
-    func getFruitDetail(type: String, callBack:@escaping(FruitItem?) -> Void) {
+    func getFruitDetail(type: String, callback:@escaping(FruitItem?) -> Void) {
         let arrayOfFruitItems = [
             FruitItem(type: "mockApple", price: 149, weight: 120),
             FruitItem(type: "mockBanana", price: 129, weight: 80)
         ]
         
         if let foundFruitType = arrayOfFruitItems.first(where: {$0.type == type}) {
-            callBack(foundFruitType)
+            callback(foundFruitType)
         } else {
-            callBack(nil)
+            callback(nil)
         }
     }
 }

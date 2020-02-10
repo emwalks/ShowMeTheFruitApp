@@ -11,6 +11,6 @@ import Foundation
 protocol FruitDataServiceProtocol {
     
     func getFruits(callback: @escaping(Array<FruitItem?>) -> Void)
-    func getFruitDetail(type: String, callBack: @escaping(FruitItem?) -> Void)
+    func getFruitDetail(type: String, callback: @escaping(FruitItem?) -> Void)
     
 }

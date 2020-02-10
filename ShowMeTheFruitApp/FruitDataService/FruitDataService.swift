@@ -17,7 +17,7 @@ class FruitDataService:FruitDataServiceProtocol  {
     
     var foundFruitItem: FruitItem? = nil
     
-    func getFruitDetail(type: String, callBack: @escaping(FruitItem?) -> Void) {
+    func getFruitDetail(type: String, callback: @escaping(FruitItem?) -> Void) {
         FruitDataService.shared.fetchFruitsFromURL { [weak self] (result) in
             switch result {
             case .failure(_):
@@ -26,7 +26,7 @@ class FruitDataService:FruitDataServiceProtocol  {
                 self?.foundFruitItem = fruits.first(where: {$0.type == type})
                 print(self?.foundFruitItem)
             }
-            callBack(self?.foundFruitItem)
+            callback(self?.foundFruitItem)
         }
     }
     
@@ -50,13 +50,13 @@ class FruitDataService:FruitDataServiceProtocol  {
     
     let fruitDataURL = "https://raw.githubusercontent.com/fmtvp/recruit-test-data/master/data.json"
     
-    func fetchFruitsFromURL(completion: @escaping(Result<[FruitItem], FruitDataServiceError>) -> Void) {
+    func fetchFruitsFromURL(callback: @escaping(Result<[FruitItem], FruitDataServiceError>) -> Void) {
         
         guard let url = URL(string: fruitDataURL) else { fatalError("URL invalid") }
         let dataTask = URLSession.shared.dataTask(with: url) { (data, response, error) in
             
             guard let jsonData = data else {
-                completion(.failure(.noFruitDataAvailable))
+                callback(.failure(.noFruitDataAvailable))
                 return
             }
             
@@ -64,9 +64,9 @@ class FruitDataService:FruitDataServiceProtocol  {
                 let decoder = JSONDecoder()
                 let fruitsResponse = try decoder.decode(FruitData.self, from: jsonData)
                 let fruits = fruitsResponse.fruit
-                completion(.success(fruits))
+                callback(.success(fruits))
             } catch {
-                completion(.failure(.fruitDataFailedProcessing))
+                callback(.failure(.fruitDataFailedProcessing))
             }
         }
         dataTask.resume()
