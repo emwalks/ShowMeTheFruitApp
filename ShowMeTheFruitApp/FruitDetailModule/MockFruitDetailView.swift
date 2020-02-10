@@ -9,7 +9,6 @@
 import Foundation
 
 class MockFruitDetailView: FruitDetailViewDelegateProtocol {
-    
     var fruitTypeFromSegue: String = ""
     
     var fruitDetailPresenter : FruitDetailPresenter!

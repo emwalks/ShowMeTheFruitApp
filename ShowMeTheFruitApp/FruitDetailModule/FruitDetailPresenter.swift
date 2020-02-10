@@ -22,8 +22,9 @@ class FruitDetailPresenter: FruitDetailPresenterProtocol {
     
     func showFruitDetail(type: String) {
         fruitDataService.getFruitDetail(type: type){ [weak self] fruits in
-            //something is wrong here!
-        
+            
+            //something is wrong here! set Fruit detail never gets called in real life
+           
             if let fruit = fruits {
                 self?.fruitDetailViewDelegate?.setFruitDetail(fruitSelected: fruit)
             }

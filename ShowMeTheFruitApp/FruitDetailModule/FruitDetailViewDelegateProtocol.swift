@@ -10,5 +10,5 @@ import Foundation
 
 protocol FruitDetailViewDelegateProtocol: class {
     var fruitTypeFromSegue: String {get set}
-   func setFruitDetail(fruitSelected: FruitItem?)
+    func setFruitDetail(fruitSelected: FruitItem?)    
 }
