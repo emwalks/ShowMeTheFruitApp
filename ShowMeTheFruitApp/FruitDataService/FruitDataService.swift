@@ -15,22 +15,15 @@ enum FruitDataServiceError : Error {
 
 class FruitDataService:FruitDataServiceProtocol  {
     
+    var listOfFruits: [FruitItem]?
     var foundFruitItem: FruitItem? = nil
     
-    func getFruitDetail(type: String, callback: @escaping(FruitItem?) -> Void) {
-        FruitDataService.shared.fetchFruitsFromURL { [weak self] (result) in
-            switch result {
-            case .failure(_):
-                self?.foundFruitItem = nil
-            case .success(let fruits):
-                self?.foundFruitItem = fruits.first(where: {$0.type == type})
-            }
-            callback(self?.foundFruitItem)
-        }
-    }
+    static let shared = FruitDataService()
     
-    var listOfFruits: [FruitItem]?
-
+    let fruitDataURL = "https://raw.githubusercontent.com/fmtvp/recruit-test-data/master/data.json"
+    
+    init() {}
+    
     func getFruits(callback: @escaping(Array<FruitItem?>) -> Void){
         FruitDataService.shared.fetchFruitsFromURL { [weak self] (result) in
             switch result {
@@ -43,15 +36,23 @@ class FruitDataService:FruitDataServiceProtocol  {
         }
     }
     
-    
-    init() {}
-    static let shared = FruitDataService()
-    
-    let fruitDataURL = "https://raw.githubusercontent.com/fmtvp/recruit-test-data/master/data.json"
-    
+    func getFruitDetail(type: String, callback: @escaping(FruitItem?) -> Void) {
+        FruitDataService.shared.fetchFruitsFromURL { [weak self] (result) in
+            switch result {
+            case .failure(_):
+                self?.foundFruitItem = nil
+            case .success(let fruits):
+                self?.foundFruitItem = fruits.first(where: {$0.type == type})
+            }
+            callback(self?.foundFruitItem)
+        }
+    }
+        
     func fetchFruitsFromURL(callback: @escaping(Result<[FruitItem], FruitDataServiceError>) -> Void) {
         
         guard let url = URL(string: fruitDataURL) else { fatalError("URL invalid") }
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
         let dataTask = URLSession.shared.dataTask(with: url) { (data, response, error) in
             
             guard let jsonData = data else {
