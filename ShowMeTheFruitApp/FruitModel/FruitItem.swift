@@ -20,6 +20,6 @@ struct FruitItem : Decodable {
         get { return Double(price) / 100.0 }
     }
     var weightInKilos: Double {
-        get { return Double(weight) / 100.0 }
+        get { return Double(weight) / 1000.0 }
     }
 }
