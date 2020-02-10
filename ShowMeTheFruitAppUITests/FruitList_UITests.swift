@@ -16,19 +16,12 @@ class FruitList_UITests: XCTestCase {
         app = XCUIApplication()
         continueAfterFailure = false
         app.launch()
-        sleep(5)
     }
     
     let fruitNames = ["apple", "banana", "blueberry", "orange", "pear", "strawberry", "kumquat", "pitaya", "kiwi"]
     
 
     func testWhenFruitListScreenIsNavigatedToAListOfFruitIsDisplayed() {
-        
-        let firstCell =  app.tables["FruitListTable"].cells.children(matching: .other).element(boundBy: 0)
-        let start = firstCell.coordinate(withNormalizedOffset: CGVector(dx: 0, dy: 1))
-        let finish = firstCell.coordinate(withNormalizedOffset: CGVector(dx: 0, dy: 6))
-        start.press(forDuration: 0, thenDragTo: finish)
-    
         XCTAssertTrue(app.tables["FruitListTable"].staticTexts["\(fruitNames[0])"].exists)
         XCTAssertTrue(app.tables["FruitListTable"].staticTexts["\(fruitNames[1])"].exists)
         XCTAssertTrue(app.tables["FruitListTable"].staticTexts["\(fruitNames[2])"].exists)
@@ -45,8 +38,8 @@ class FruitList_UITests: XCTestCase {
         let mockFruitItem = ["apple", 1.49, 1.20] as [Any]
         app.tables["FruitListTable"].staticTexts["apple"].tap()
         
-        XCTAssertEqual(app.staticTexts.element(matching:.any, identifier: "pricePresented").label, "£ \(mockFruitItem[1])")
-        XCTAssertEqual(app.staticTexts.element(matching:.any, identifier: "weightPresented").label, "\(mockFruitItem[2]) kg")
+        XCTAssertEqual(app.staticTexts.element(matching:.any, identifier: "pricePresented").label, "Price: £\(mockFruitItem[1])")
+        XCTAssertEqual(app.staticTexts.element(matching:.any, identifier: "weightPresented").label, "Weight: \(mockFruitItem[2]) kg")
        
     }
 

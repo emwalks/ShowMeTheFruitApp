@@ -50,6 +50,8 @@ class FruitDetailViewController: UIViewController, FruitDetailViewDelegateProtoc
     override func viewDidLoad() {
         super.viewDidLoad()
         fruitDetailPresenter = FruitDetailPresenter(fruitDetailViewDelegate: self, fruitDataService: FruitDataService())
+        priceLabel.accessibilityIdentifier = "pricePresented"
+        weightLabel.accessibilityIdentifier = "weightPresented"
     }
     
 }
