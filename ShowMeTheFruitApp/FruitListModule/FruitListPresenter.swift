@@ -35,7 +35,7 @@ class FruitListPresenter: FruitListPresenterProtocol {
         
     }
     
-    func showFruitDetails(fruitTypeSelected: String){
+    func showFruitDetailsView(fruitTypeSelected: String){
         screenNavigationController.displayFruitDetailView(fruitTypeSelected)
      }
     

@@ -15,11 +15,12 @@ class FruitDetailViewController: UIViewController, FruitDetailViewDelegateProtoc
     
     var fruitTypeFromSegue: String = ""
     
-    @IBOutlet weak var fruitLabel: UILabel! {
-        didSet {
-            self.fruitLabel.attributedText = NSAttributedString(string: fruitTypeFromSegue)
-          }
-    }
+    @IBOutlet weak var fruitLabel: UILabel!
+    //{
+//        didSet {
+//            self.fruitLabel.attributedText = NSAttributedString(string: fruitTypeFromSegue)
+//          }
+//    }
 
     var fruitPriceLabel: Double = -1
     var fruitWeightLabel: Double = -1
@@ -34,6 +35,7 @@ class FruitDetailViewController: UIViewController, FruitDetailViewDelegateProtoc
     override func viewDidLoad() {
         super.viewDidLoad()
         fruitDetailPresenter = FruitDetailPresenter(fruitDetailViewDelegate: self, fruitDataService: FruitDataService())
+        self.fruitLabel.attributedText = NSAttributedString(string: fruitTypeFromSegue)
 
         // Do any additional setup after loading the view.
     }

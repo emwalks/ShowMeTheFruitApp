@@ -66,7 +66,7 @@ class FruitListPresenter_Tests: XCTestCase {
         let mockScreenNavigationController = MockScreenNavController()
         let fruitListPresenter = FruitListPresenter(fruitListViewDelegate: mockFruitListView, fruitDataService: mockFruitDataService, screenNavigationController: mockScreenNavigationController)
         
-        fruitListPresenter.showFruitDetails(fruitTypeSelected: "")
+        fruitListPresenter.showFruitDetailsView(fruitTypeSelected: "")
         
         XCTAssertEqual(mockScreenNavigationController.fruitDetailScreen, true)
     }

@@ -78,7 +78,7 @@ class FruitListTableViewController: UITableViewController, FruitListViewDelegate
         
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        fruitListPresenter?.showFruitDetails(fruitTypeSelected: arrayOfFruitTypes[indexPath.row]!)
+        fruitListPresenter?.showFruitDetailsView(fruitTypeSelected: arrayOfFruitTypes[indexPath.row]!)
  
     }
     

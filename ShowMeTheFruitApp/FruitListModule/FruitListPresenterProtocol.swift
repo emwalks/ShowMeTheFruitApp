@@ -14,5 +14,5 @@ protocol FruitListPresenterProtocol {
     
     func showFruitList()
     
-    func showFruitDetails(fruitTypeSelected: String)
+    func showFruitDetailsView(fruitTypeSelected: String)
 }
