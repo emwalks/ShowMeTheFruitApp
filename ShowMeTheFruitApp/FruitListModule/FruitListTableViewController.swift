@@ -31,6 +31,9 @@ class FruitListTableViewController: UITableViewController, FruitListViewDelegate
         fruitListPresenter = FruitListPresenter(fruitListViewDelegate: self, fruitDataService: FruitDataService(), screenNavigationController: SegueNavigationController(self))
         tableView.accessibilityIdentifier = "FruitListTable"
         tableView.refreshControl = refreshData
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
     }
     
     // MARK: - Table view data source
