@@ -21,7 +21,7 @@ class FruitDetailPresenter: FruitDetailPresenterProtocol {
     }
     
     func showFruitDetail(type: String) {
-        fruitDataService.getFruitDetail(type: type) { [weak self] result in
+        fruitDataService.getFruitDetail(type: type) { [weak self] result, requestTimeInterval in
             //something is wrong here! set Fruit detail never gets called in real life
             if let fruit = result {
                 self!.fruitDetailViewDelegate?.setFruitDetail(fruitSelected: fruit)

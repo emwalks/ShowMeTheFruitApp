@@ -10,7 +10,7 @@ import Foundation
 
 protocol FruitDataServiceProtocol {
     
-    func getFruits(callback: @escaping(Array<FruitItem?>) -> Void)
-    func getFruitDetail(type: String, callback: @escaping(FruitItem?) -> Void)
+    func getFruits(callback: @escaping(Array<FruitItem?>, TimeInterval?) -> Void)
+    func getFruitDetail(type: String, callback:@escaping(FruitItem?, TimeInterval?) -> Void)
     
 }

@@ -24,10 +24,10 @@ class FruitListPresenter: FruitListPresenterProtocol {
     
     
     func showFruitList() {
-        fruitDataService.getFruits { [weak self] fruits in
+        fruitDataService.getFruits { [weak self] result, requestTimeInterval  in
             
             var arrayOfFruitTypes: Array<String?> = []
-            fruits.forEach {
+            result.forEach {
                 arrayOfFruitTypes.append($0?.type)
             }
             self?.fruitListViewDelegate?.setFruit(arrayOfFruitTypes: arrayOfFruitTypes)
