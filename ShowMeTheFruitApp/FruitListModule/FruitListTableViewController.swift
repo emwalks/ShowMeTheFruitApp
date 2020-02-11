@@ -23,17 +23,47 @@ class FruitListTableViewController: UITableViewController, FruitListViewDelegate
         self.arrayOfFruitTypes = arrayOfFruitTypes
     }
     
-    var fruitListPresenter: FruitListPresenterProtocol? = nil
+    private var fruitListPresenter: FruitListPresenterProtocol?
+    private var viewWillAppearDate: Date?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         //this view should be passive? Should it know about the actual fruitDataService? Or even the presenter? 🧐
         fruitListPresenter = FruitListPresenter(fruitListViewDelegate: self, fruitDataService: FruitDataService(), screenNavigationController: SegueNavigationController(self))
+        
+        
         tableView.accessibilityIdentifier = "FruitListTable"
         tableView.refreshControl = refreshData
         
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .always
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewWillAppearDate = Date()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if let viewWillAppearDate = viewWillAppearDate {
+            fruitListPresenter?.sendDisplayStatistic(timeTaken: Date().timeIntervalSince(viewWillAppearDate))
+                self.viewWillAppearDate = nil
+            }
+    }
+    
+    lazy var refreshData: UIRefreshControl? = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.tintColor = UIColor.systemGray
+        refreshControl.addTarget(self, action: #selector(reloadData), for: .valueChanged)
+        return refreshControl
+    }()
+    
+    @objc func reloadData(){
+        fruitListPresenter?.showFruitList()
+        tableView.reloadData()
+        refreshControl?.endRefreshing()
     }
     
     // MARK: - Table view data source
@@ -58,23 +88,10 @@ class FruitListTableViewController: UITableViewController, FruitListViewDelegate
         return fruitListCell
     }
     
-    lazy var refreshData: UIRefreshControl? = {
-        let refreshControl = UIRefreshControl()
-        refreshControl.tintColor = UIColor.systemGray
-        refreshControl.addTarget(self, action: #selector(reloadData), for: .valueChanged)
-        return refreshControl
-    }()
-    
-    @objc func reloadData(){
-        fruitListPresenter?.showFruitList()
-        tableView.reloadData()
-        refreshControl?.endRefreshing()
-    }
-        
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         fruitListPresenter?.showFruitDetailsView(fruitTypeSelected: arrayOfFruitTypes[indexPath.row]!)
- 
-    }
         
+    }
+    
 }

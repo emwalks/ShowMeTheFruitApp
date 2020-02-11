@@ -9,7 +9,7 @@
 import Foundation
 
 class MockFruitDataService: FruitDataServiceProtocol {
-
+ 
     func getFruits(callback:@escaping(Array<FruitItem?>) -> Void) {
         let arrayOfFruitItems = [
                    FruitItem(type: "mockApple", price: 149, weight: 120),
@@ -30,4 +30,28 @@ class MockFruitDataService: FruitDataServiceProtocol {
             callback(nil)
         }
     }
+    
+    var urlComponents = URLComponents()
+    
+    func createStatsURLComponents() -> URLComponents {
+    
+        urlComponents.scheme = "https"
+        urlComponents.host = "raw.githubusercontent.com"
+        urlComponents.path = "/fmtvp/recruit-test-data/master/stats"
+        return urlComponents
+    }
+    
+    func loadEvent(timeTaken: TimeInterval) -> URLComponents {
+         return urlComponents
+     }
+     
+     func displayEvent(timeTaken: TimeInterval) -> URLComponents {
+         return urlComponents
+     }
+     
+     var statisticsSent = false
+     
+     func sendStatistics(event: URLComponents) {
+         statisticsSent = true
+     }
 }

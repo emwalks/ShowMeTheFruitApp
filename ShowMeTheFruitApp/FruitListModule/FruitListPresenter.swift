@@ -10,7 +10,7 @@ import Foundation
 
 
 class FruitListPresenter: FruitListPresenterProtocol {
-    
+
     private weak var fruitListViewDelegate: FruitListViewDelegateProtocol?
     private let fruitDataService: FruitDataServiceProtocol
     var screenNavigationController: ScreenNavigationControllerProtocol
@@ -33,6 +33,11 @@ class FruitListPresenter: FruitListPresenterProtocol {
             self?.fruitListViewDelegate?.setFruit(arrayOfFruitTypes: arrayOfFruitTypes)
         }
     }
+    
+    func sendDisplayStatistic(timeTaken: TimeInterval) {
+        let displayEventURL = fruitDataService.displayEvent(timeTaken: timeTaken)
+        fruitDataService.sendStatistics(event: displayEventURL)
+      }
     
     func showFruitDetailsView(fruitTypeSelected: String){
         screenNavigationController.displayFruitDetailView(fruitTypeSelected)

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		981705DA23F317200042F954 /* FruitListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986477C923F036E200255C9D /* FruitListTableViewController.swift */; };
+		981705DC23F3172D0042F954 /* FruitDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986477DF23F0A55000255C9D /* FruitDetailViewController.swift */; };
 		986476F923EDCA2900255C9D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986476F823EDCA2900255C9D /* AppDelegate.swift */; };
 		986476FB23EDCA2900255C9D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986476FA23EDCA2900255C9D /* SceneDelegate.swift */; };
 		9864770023EDCA2900255C9D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 986476FE23EDCA2900255C9D /* Main.storyboard */; };
@@ -407,6 +409,7 @@
 				9864773423EE036F00255C9D /* FruitListPresenterProtocol.swift in Sources */,
 				986477E723F0AAFC00255C9D /* MockScreenNavController.swift in Sources */,
 				9864773D23EE045D00255C9D /* FruitListPresenter.swift in Sources */,
+				981705DC23F3172D0042F954 /* FruitDetailViewController.swift in Sources */,
 				9864773323EE036A00255C9D /* FruitDataServiceProtocol.swift in Sources */,
 				9864773723EE03CA00255C9D /* FruitListViewDelegateProtocol.swift in Sources */,
 				9864773C23EE044600255C9D /* MockFruitDataService.swift in Sources */,
@@ -417,6 +420,7 @@
 				986477D823F09F8F00255C9D /* FruitDetailPresenterProtocol.swift in Sources */,
 				9864772A23EDCEE300255C9D /* FruitListPresenter_Tests.swift in Sources */,
 				986477DE23F0A0AE00255C9D /* MockFruitDetailView.swift in Sources */,
+				981705DA23F317200042F954 /* FruitListTableViewController.swift in Sources */,
 				9864774023EE049000255C9D /* MockFruitListView.swift in Sources */,
 				986477DB23F0A05100255C9D /* FruitDetailViewDelegateProtocol.swift in Sources */,
 				9864772E23EDDBF100255C9D /* FruitItem.swift in Sources */,

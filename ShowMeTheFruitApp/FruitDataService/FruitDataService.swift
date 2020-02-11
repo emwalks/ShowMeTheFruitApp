@@ -55,6 +55,9 @@ class FruitDataService: FruitDataServiceProtocol   {
         
         let fetchRequestStartTime = Date()
         
+        //should this be an assertion failure instead of a fatal error - reduce likelihood of app crash?
+        //can you use assertion failures with guard?
+        
         guard let url = URL(string: fruitDataURL) else { fatalError("URL invalid") }
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
@@ -86,7 +89,7 @@ class FruitDataService: FruitDataServiceProtocol   {
         }
         dataTask.resume()
     }
-        
+    
     enum StatisticsEvents {
         case load
         case display
@@ -102,14 +105,13 @@ class FruitDataService: FruitDataServiceProtocol   {
         }
     }
     
-        func createStatsURLComponents() -> URLComponents {
-            var urlComponents = URLComponents()
-            urlComponents.scheme = "https"
-            urlComponents.host = "raw.githubusercontent.com"
-            urlComponents.path = "/fmtvp/recruit-test-data/master/stats"
-            return urlComponents
-        }
-    
+    func createStatsURLComponents() -> URLComponents {
+        var urlComponents = URLComponents()
+        urlComponents.scheme = "https"
+        urlComponents.host = "raw.githubusercontent.com"
+        urlComponents.path = "/fmtvp/recruit-test-data/master/stats"
+        return urlComponents
+    }
     
     private let queryName = "data"
     
@@ -120,6 +122,11 @@ class FruitDataService: FruitDataServiceProtocol   {
         let queryData = URLQueryItem(name: queryName, value: "\(Double(timeTaken*1000))")
         statsUrlComponents.queryItems = [queryItem, queryData]
         return statsUrlComponents
+    }
+    
+    func displayEvent(timeTaken: TimeInterval) -> URLComponents {
+        let toGetTestRun = URLComponents()
+        return toGetTestRun
     }
     
     func sendStatistics(event: URLComponents) {

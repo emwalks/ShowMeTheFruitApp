@@ -15,4 +15,6 @@ protocol FruitListPresenterProtocol {
     func showFruitList()
     
     func showFruitDetailsView(fruitTypeSelected: String)
+    
+    func sendDisplayStatistic(timeTaken: TimeInterval)
 }

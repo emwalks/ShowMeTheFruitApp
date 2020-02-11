@@ -13,4 +13,8 @@ protocol FruitDataServiceProtocol {
     func getFruits(callback: @escaping(Array<FruitItem?>) -> Void)
     func getFruitDetail(type: String, callback:@escaping(FruitItem?) -> Void)
     
+    func loadEvent(timeTaken: TimeInterval) -> URLComponents
+    func displayEvent(timeTaken: TimeInterval) -> URLComponents
+    func sendStatistics(event: URLComponents)
+    
 }

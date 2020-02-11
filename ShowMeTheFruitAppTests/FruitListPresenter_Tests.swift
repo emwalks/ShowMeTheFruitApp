@@ -70,6 +70,20 @@ class FruitListPresenter_Tests: XCTestCase {
         
         XCTAssertEqual(mockScreenNavigationController.fruitDetailScreen, true)
     }
+    
+    func testWhenTheSendDisplayStatisticIsCalledTheStatisticURLIsSent(){
+        
+        let mockFruitDataService = MockFruitDataService()
+        let mockFruitListView = MockFruitListView()
+        let mockScreenNavigationController = MockScreenNavController()
+        let fruitListPresenter = FruitListPresenter(fruitListViewDelegate: mockFruitListView, fruitDataService: mockFruitDataService, screenNavigationController: mockScreenNavigationController)
+        
+        fruitListPresenter.sendDisplayStatistic(timeTaken: -1)
+        let actualResult = mockFruitDataService.statisticsSent
+        
+        XCTAssertEqual(actualResult, true)
+        
+    }
 }
 
 
