@@ -78,7 +78,7 @@ class FruitListPresenter_Tests: XCTestCase {
         let mockScreenNavigationController = MockScreenNavController()
         let fruitListPresenter = FruitListPresenter(fruitListViewDelegate: mockFruitListView, fruitDataService: mockFruitDataService, screenNavigationController: mockScreenNavigationController)
         
-        fruitListPresenter.sendDisplayStatistic(timeTaken: -1)
+        fruitListPresenter.sendDisplayStatistics(timeTaken: -1)
         let actualResult = mockFruitDataService.statisticsSent
         
         XCTAssertEqual(actualResult, true)

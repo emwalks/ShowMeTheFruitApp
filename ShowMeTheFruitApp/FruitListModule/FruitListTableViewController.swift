@@ -48,7 +48,7 @@ class FruitListTableViewController: UITableViewController, FruitListViewDelegate
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if let viewWillAppearDate = viewWillAppearDate {
-            fruitListPresenter?.sendDisplayStatistic(timeTaken: Date().timeIntervalSince(viewWillAppearDate))
+            fruitListPresenter?.sendDisplayStatistics(timeTaken: Date().timeIntervalSince(viewWillAppearDate))
                 self.viewWillAppearDate = nil
             }
     }

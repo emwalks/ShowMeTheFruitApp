@@ -32,5 +32,18 @@ class FruitDetailPresenter_Tests: XCTestCase {
         
     }
     
+    func testWhenTheSendDisplayStatisticIsCalledTheStatisticURLIsSent(){
+           
+            let mockFruitDataService = MockFruitDataService()
+            let mockFruitDetailView = MockFruitDetailView()
+            let fruitDetailPresenter = FruitDetailPresenter(fruitDetailViewDelegate: mockFruitDetailView, fruitDataService: mockFruitDataService)
+           
+           fruitDetailPresenter.sendDisplayStatistics(timeTaken: -1)
+           let actualResult = mockFruitDataService.statisticsSent
+           
+           XCTAssertEqual(actualResult, true)
+           
+       }
+    
 }
 

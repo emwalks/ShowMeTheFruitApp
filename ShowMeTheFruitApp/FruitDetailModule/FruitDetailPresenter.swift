@@ -27,5 +27,10 @@ class FruitDetailPresenter: FruitDetailPresenterProtocol {
             }
         }
     }
+    
+    func sendDisplayStatistics(timeTaken: TimeInterval) {
+        let displayEventURL = fruitDataService.displayEvent(timeTaken: timeTaken)
+        fruitDataService.sendStatistics(event: displayEventURL)
+    }
 }
 

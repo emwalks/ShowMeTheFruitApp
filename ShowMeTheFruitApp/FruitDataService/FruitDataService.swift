@@ -66,7 +66,6 @@ class FruitDataService: FruitDataServiceProtocol   {
             guard let jsonData = data else {
                 let loadEventURL = self.loadEvent(timeTaken: Date().timeIntervalSince(fetchRequestStartTime))
                 self.sendStatistics(event: loadEventURL)
-                print(loadEventURL)
                 callback(.failure(.noFruitDataAvailable))
                 return
             }
@@ -78,12 +77,10 @@ class FruitDataService: FruitDataServiceProtocol   {
                 let fruits = fruitsResponse.fruit
                 let loadEventURL = self.loadEvent(timeTaken: Date().timeIntervalSince(fetchRequestStartTime))
                 self.sendStatistics(event: loadEventURL)
-                print(loadEventURL)
                 callback(.success(fruits))
             } catch {
                 let loadEventURL = self.loadEvent(timeTaken: Date().timeIntervalSince(fetchRequestStartTime))
                 self.sendStatistics(event: loadEventURL)
-                print(loadEventURL)
                 callback(.failure(.fruitDataFailedProcessing))
             }
         }
@@ -125,8 +122,11 @@ class FruitDataService: FruitDataServiceProtocol   {
     }
     
     func displayEvent(timeTaken: TimeInterval) -> URLComponents {
-        let toGetTestRun = URLComponents()
-        return toGetTestRun
+        var statsUrlComponents = createStatsURLComponents()
+        let queryItem = StatisticsEvents.display.queryItem
+        let queryData = URLQueryItem(name: queryName, value: "\(Double(timeTaken*1000))")
+        statsUrlComponents.queryItems = [queryItem, queryData]
+        return statsUrlComponents
     }
     
     func sendStatistics(event: URLComponents) {
@@ -134,6 +134,7 @@ class FruitDataService: FruitDataServiceProtocol   {
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         let dataTask = URLSession.shared.dataTask(with: url)
+        print("GET request made to the following URL: \(url)")
         dataTask.resume()
     }
     
