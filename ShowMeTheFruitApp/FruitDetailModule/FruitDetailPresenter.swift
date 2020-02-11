@@ -12,7 +12,7 @@ class FruitDetailPresenter: FruitDetailPresenterProtocol {
     
     private weak var fruitDetailViewDelegate: FruitDetailViewDelegateProtocol?
     private let fruitDataService: FruitDataServiceProtocol
-    var fruitReceivedFromNavigator: String = ""
+    private var fruitReceivedFromNavigator: String = ""
     
     required init(fruitDetailViewDelegate: FruitDetailViewDelegateProtocol?, fruitDataService: FruitDataServiceProtocol) {
         self.fruitDataService = fruitDataService

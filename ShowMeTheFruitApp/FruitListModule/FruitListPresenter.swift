@@ -13,7 +13,7 @@ class FruitListPresenter: FruitListPresenterProtocol {
     
     private weak var fruitListViewDelegate: FruitListViewDelegateProtocol?
     private let fruitDataService: FruitDataServiceProtocol
-    var screenNavigationController: ScreenNavigationControllerProtocol
+    private var screenNavigationController: ScreenNavigationControllerProtocol
     
     required init(fruitListViewDelegate: FruitListViewDelegateProtocol?, fruitDataService: FruitDataServiceProtocol,  screenNavigationController: ScreenNavigationControllerProtocol) {
         self.fruitDataService = fruitDataService

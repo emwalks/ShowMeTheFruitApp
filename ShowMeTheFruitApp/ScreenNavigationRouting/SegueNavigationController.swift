@@ -11,9 +11,9 @@ import UIKit
 
 class SegueNavigationController: ScreenNavigationControllerProtocol {
     
-    var viewController: UIViewController
+    private var viewController: UIViewController
     
-    init(_ viewController:UIViewController) {
+    init(_ viewController: UIViewController) {
         self.viewController = viewController
     }
     

@@ -11,7 +11,9 @@ import Foundation
 
 class FruitListTableViewController: UITableViewController, FruitListViewDelegateProtocol {
     
-    var arrayOfFruitTypes: Array<String?> = [] {
+    private var fruitListPresenter: FruitListPresenterProtocol?
+    private var viewWillAppearDate: Date?
+    private var arrayOfFruitTypes: Array<String?> = [] {
         didSet {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -23,8 +25,6 @@ class FruitListTableViewController: UITableViewController, FruitListViewDelegate
         self.arrayOfFruitTypes = arrayOfFruitTypes
     }
     
-    private var fruitListPresenter: FruitListPresenterProtocol?
-    private var viewWillAppearDate: Date?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,14 +53,14 @@ class FruitListTableViewController: UITableViewController, FruitListViewDelegate
             }
     }
     
-    lazy var refreshData: UIRefreshControl? = {
+    lazy private var refreshData: UIRefreshControl? = {
         let refreshControl = UIRefreshControl()
         refreshControl.tintColor = UIColor.systemGray
         refreshControl.addTarget(self, action: #selector(reloadData), for: .valueChanged)
         return refreshControl
     }()
     
-    @objc func reloadData(){
+    @objc private func reloadData(){
         fruitListPresenter?.showFruitList()
         tableView.reloadData()
         refreshControl?.endRefreshing()

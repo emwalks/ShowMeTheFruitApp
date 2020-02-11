@@ -11,9 +11,10 @@ import UIKit
 
 class FruitDetailViewController: UIViewController, FruitDetailViewDelegateProtocol {
     
-    private var fruitDetailPresenter : FruitDetailPresenter?
+    private  var fruitDetailPresenter : FruitDetailPresenter?
     private var viewWillAppearDate: Date?
-    
+    private var fruitPrice: Double = -1.00
+    private var fruitWeight: Double = -1.00
     var fruitTypeFromSegue: String = ""
     
     @IBOutlet weak var fruitLabel: UILabel! {
@@ -38,9 +39,6 @@ class FruitDetailViewController: UIViewController, FruitDetailViewDelegateProtoc
         }
     }
     
-    var fruitPrice: Double = -1.00
-    var fruitWeight: Double = -1.00
-    
     func setFruitDetail(fruitSelected: FruitItem?) {
         self.fruitTypeFromSegue = fruitSelected!.typeCapital
         self.fruitPrice = fruitSelected!.priceInPounds
@@ -64,8 +62,8 @@ class FruitDetailViewController: UIViewController, FruitDetailViewDelegateProtoc
         super.viewDidAppear(animated)
         if let viewWillAppearDate = viewWillAppearDate {
             fruitDetailPresenter?.sendDisplayStatistics(timeTaken: Date().timeIntervalSince(viewWillAppearDate))
-                self.viewWillAppearDate = nil
-            }
+            self.viewWillAppearDate = nil
+        }
     }
     
 }

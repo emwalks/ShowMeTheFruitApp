@@ -15,15 +15,15 @@ enum FruitDataServiceError : Error {
 
 class FruitDataService: FruitDataServiceProtocol   {
     
-    static let shared = FruitDataService()
+    static private let shared = FruitDataService()
     public let urlConfiguration = URLSessionConfiguration.default
     public var urlSession: URLSession?
     
-    let fruitDataURL = "https://raw.githubusercontent.com/fmtvp/recruit-test-data/master/data.json"
-    var listOfFruits: [FruitItem]?
-    var foundFruitItem: FruitItem?
+    private let fruitDataURL = "https://raw.githubusercontent.com/fmtvp/recruit-test-data/master/data.json"
+    private var listOfFruits: [FruitItem]?
+    private var foundFruitItem: FruitItem?
     //timeInterval is in units of seconds
-    var timeInterval: TimeInterval?
+    private var timeInterval: TimeInterval?
     
     init() {}
     
@@ -55,7 +55,7 @@ class FruitDataService: FruitDataServiceProtocol   {
         }
     }
     
-    func fetchFruitsFromURL(callback: @escaping(Result<[FruitItem], FruitDataServiceError>) -> Void) {
+    private func fetchFruitsFromURL(callback: @escaping(Result<[FruitItem], FruitDataServiceError>) -> Void) {
         
         let fetchRequestStartTime = Date()
         
@@ -114,7 +114,7 @@ class FruitDataService: FruitDataServiceProtocol   {
         }
     }
     
-    func createStatsURLComponents() -> URLComponents {
+    private func createStatsURLComponents() -> URLComponents {
         var urlComponents = URLComponents()
         urlComponents.scheme = "https"
         urlComponents.host = "raw.githubusercontent.com"
