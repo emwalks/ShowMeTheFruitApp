@@ -27,7 +27,7 @@ class FruitListTableViewController: UITableViewController, FruitListViewDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //this view should be passive? Should it know about the actual fruitDataService?
+        //this view should be passive? Should it know about the actual fruitDataService? Or even the presenter? 🧐
         fruitListPresenter = FruitListPresenter(fruitListViewDelegate: self, fruitDataService: FruitDataService(), screenNavigationController: SegueNavigationController(self))
         tableView.accessibilityIdentifier = "FruitListTable"
         tableView.refreshControl = refreshData
@@ -75,14 +75,6 @@ class FruitListTableViewController: UITableViewController, FruitListViewDelegate
         
         fruitListPresenter?.showFruitDetailsView(fruitTypeSelected: arrayOfFruitTypes[indexPath.row]!)
  
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ViewFruitDetails" {
-            if let fruitDetailViewController = segue.destination as? FruitDetailViewController {
-                fruitDetailViewController.fruitTypeFromSegue = (sender as? String)!
-            }
-        }
     }
         
 }

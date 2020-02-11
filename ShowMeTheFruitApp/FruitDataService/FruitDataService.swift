@@ -117,7 +117,7 @@ class FruitDataService: FruitDataServiceProtocol   {
         
         var statsUrlComponents = createStatsURLComponents()
         let queryItem = StatisticsEvents.load.queryItem
-        let queryData = URLQueryItem(name: queryName, value: "\(Double(timeTaken/1000))")
+        let queryData = URLQueryItem(name: queryName, value: "\(Double(timeTaken*1000))")
         statsUrlComponents.queryItems = [queryItem, queryData]
         return statsUrlComponents
     }
