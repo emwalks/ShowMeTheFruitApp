@@ -15,6 +15,7 @@ protocol FruitDataServiceProtocol {
     
     func loadEvent(timeTaken: TimeInterval) -> URLComponents
     func displayEvent(timeTaken: TimeInterval) -> URLComponents
+    func errorEvent(errorDescription: String) -> URLComponents
     func sendStatistics(event: URLComponents)
     
 }

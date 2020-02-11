@@ -11,7 +11,8 @@ import UIKit
 
 class FruitDetailViewController: UIViewController, FruitDetailViewDelegateProtocol {
     
-    var fruitDetailPresenter : FruitDetailPresenter? = nil
+    private var fruitDetailPresenter : FruitDetailPresenter?
+    private var viewWillAppearDate: Date?
     
     var fruitTypeFromSegue: String = ""
     
@@ -52,6 +53,19 @@ class FruitDetailViewController: UIViewController, FruitDetailViewDelegateProtoc
         fruitDetailPresenter = FruitDetailPresenter(fruitDetailViewDelegate: self, fruitDataService: FruitDataService())
         priceLabel.accessibilityIdentifier = "pricePresented"
         weightLabel.accessibilityIdentifier = "weightPresented"
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewWillAppearDate = Date()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if let viewWillAppearDate = viewWillAppearDate {
+            fruitDetailPresenter?.sendDisplayStatistics(timeTaken: Date().timeIntervalSince(viewWillAppearDate))
+                self.viewWillAppearDate = nil
+            }
     }
     
 }

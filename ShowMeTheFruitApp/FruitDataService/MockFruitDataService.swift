@@ -48,6 +48,10 @@ class MockFruitDataService: FruitDataServiceProtocol {
      func displayEvent(timeTaken: TimeInterval) -> URLComponents {
          return urlComponents
      }
+    
+   func errorEvent(errorDescription: String) -> URLComponents {
+          return urlComponents
+      }
      
      var statisticsSent = false
      

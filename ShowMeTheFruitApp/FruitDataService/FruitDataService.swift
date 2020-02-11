@@ -32,6 +32,8 @@ class FruitDataService: FruitDataServiceProtocol   {
             switch result {
             case .failure(_):
                 self?.listOfFruits = []
+                let errorEventURL = self?.errorEvent(errorDescription: "Unable to get fruit data")
+                self?.sendStatistics(event: errorEventURL!)
             case .success(let fruits):
                 self?.listOfFruits = fruits
             }
@@ -44,6 +46,8 @@ class FruitDataService: FruitDataServiceProtocol   {
             switch result {
             case .failure(_):
                 self?.foundFruitItem = nil
+                let errorEventURL = self?.errorEvent(errorDescription: "Unable to get fruit details")
+                self?.sendStatistics(event: errorEventURL!)
             case .success(let fruits):
                 self?.foundFruitItem = fruits.first(where: {$0.type == type})
             }
@@ -58,7 +62,11 @@ class FruitDataService: FruitDataServiceProtocol   {
         //should this be an assertion failure instead of a fatal error - reduce likelihood of app crash?
         //can you use assertion failures with guard?
         
-        guard let url = URL(string: fruitDataURL) else { fatalError("URL invalid") }
+        guard let url = URL(string: fruitDataURL) else {
+            let errorEventURL = self.errorEvent(errorDescription: "URL invalid")
+            self.sendStatistics(event: errorEventURL)
+            fatalError("URL invalid")
+        }
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         let dataTask = URLSession.shared.dataTask(with: url) { (data, response, error) in
@@ -67,6 +75,8 @@ class FruitDataService: FruitDataServiceProtocol   {
                 let loadEventURL = self.loadEvent(timeTaken: Date().timeIntervalSince(fetchRequestStartTime))
                 self.sendStatistics(event: loadEventURL)
                 callback(.failure(.noFruitDataAvailable))
+                let errorEventURL = self.errorEvent(errorDescription: "No fruit data available")
+                self.sendStatistics(event: errorEventURL)
                 return
             }
             
@@ -82,6 +92,8 @@ class FruitDataService: FruitDataServiceProtocol   {
                 let loadEventURL = self.loadEvent(timeTaken: Date().timeIntervalSince(fetchRequestStartTime))
                 self.sendStatistics(event: loadEventURL)
                 callback(.failure(.fruitDataFailedProcessing))
+                let errorEventURL = self.errorEvent(errorDescription: "Fruit data processing failed")
+                self.sendStatistics(event: errorEventURL)
             }
         }
         dataTask.resume()
@@ -129,8 +141,21 @@ class FruitDataService: FruitDataServiceProtocol   {
         return statsUrlComponents
     }
     
+    
+    func errorEvent(errorDescription: String) -> URLComponents {
+        var statsUrlComponents = createStatsURLComponents()
+        let queryItem = StatisticsEvents.error.queryItem
+        let queryData = URLQueryItem(name: queryName, value: errorDescription)
+        statsUrlComponents.queryItems = [queryItem, queryData]
+        return statsUrlComponents
+    }
+    
     func sendStatistics(event: URLComponents) {
-        guard let url = event.url else { fatalError("URL invalid") }
+        guard let url = event.url else {
+            let errorEventURL = self.errorEvent(errorDescription: "URL invalid")
+            self.sendStatistics(event: errorEventURL)
+            fatalError("URL invalid")
+        }
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         let dataTask = URLSession.shared.dataTask(with: url)

@@ -13,5 +13,7 @@ protocol FruitDetailPresenterProtocol {
     init(fruitDetailViewDelegate: FruitDetailViewDelegateProtocol?, fruitDataService: FruitDataServiceProtocol)
     
     func showFruitDetail(type: String)
+    
+    func sendDisplayStatistics(timeTaken: TimeInterval) 
 }
  
