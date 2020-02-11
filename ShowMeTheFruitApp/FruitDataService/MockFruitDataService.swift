@@ -10,24 +10,24 @@ import Foundation
 
 class MockFruitDataService: FruitDataServiceProtocol {
 
-    func getFruits(callback:@escaping(Array<FruitItem?>, TimeInterval?) -> Void) {
+    func getFruits(callback:@escaping(Array<FruitItem?>) -> Void) {
         let arrayOfFruitItems = [
                    FruitItem(type: "mockApple", price: 149, weight: 120),
                    FruitItem(type: "mockBanana", price: 129, weight: 80)
                ]
-        callback(arrayOfFruitItems, nil)
+        callback(arrayOfFruitItems)
     }
     
-    func getFruitDetail(type: String, callback:@escaping(FruitItem?, TimeInterval?) -> Void) {
+    func getFruitDetail(type: String, callback:@escaping(FruitItem?) -> Void) {
         let arrayOfFruitItems = [
             FruitItem(type: "mockApple", price: 149, weight: 120),
             FruitItem(type: "mockBanana", price: 129, weight: 80)
         ]
         
         if let foundFruitType = arrayOfFruitItems.first(where: {$0.type == type}) {
-            callback(foundFruitType, nil)
+            callback(foundFruitType)
         } else {
-            callback(nil, nil)
+            callback(nil)
         }
     }
 }

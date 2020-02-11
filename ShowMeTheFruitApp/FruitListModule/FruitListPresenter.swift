@@ -24,7 +24,7 @@ class FruitListPresenter: FruitListPresenterProtocol {
     
     
     func showFruitList() {
-        fruitDataService.getFruits { [weak self] result, requestTimeInterval  in
+        fruitDataService.getFruits { [weak self] result  in
             
             var arrayOfFruitTypes: Array<String?> = []
             result.forEach {
