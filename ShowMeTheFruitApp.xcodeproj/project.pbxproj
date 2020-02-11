@@ -151,13 +151,13 @@
 		986476F723EDCA2900255C9D /* ShowMeTheFruitApp */ = {
 			isa = PBXGroup;
 			children = (
+				986476FE23EDCA2900255C9D /* Main.storyboard */,
+				9864770323EDCA2900255C9D /* LaunchScreen.storyboard */,
 				986477D223F086FA00255C9D /* FruitModel */,
 				986477D023F086BC00255C9D /* FruitDataService */,
 				986477E823F189EF00255C9D /* ScreenNavigationRouting */,
 				9864772B23EDDB5D00255C9D /* FruitListModule */,
 				986477CB23F0833300255C9D /* FruitDetailModule */,
-				986476FE23EDCA2900255C9D /* Main.storyboard */,
-				9864770323EDCA2900255C9D /* LaunchScreen.storyboard */,
 				9864772823EDCA4300255C9D /* SupportingFiles */,
 				986476F623EDCA2900255C9D /* Products */,
 			);
