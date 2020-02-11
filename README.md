@@ -18,4 +18,4 @@ Development Techniques:
 - Object mocking
 - Protocols to reduce direct dependancy
 
-<img src= "https://cdn.pixabay.com/photo/2019/05/14/17/11/fruit-4202929_960_720.png" width="100">
+ <img src= "https://cdn.pixabay.com/photo/2019/05/14/17/11/fruit-4202929_960_720.png" width="350">
