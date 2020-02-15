@@ -69,7 +69,7 @@ class FruitDataService: FruitDataServiceProtocol   {
         }
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
-        let dataTask = URLSession.shared.dataTask(with: url) { (data, response, error) in
+        let dataTask = URLSession.shared.dataTask(with: request) { (data, response, error) in
             
             guard let jsonData = data else {
                 let loadEventURL = self.loadEvent(timeTaken: Date().timeIntervalSince(fetchRequestStartTime))
@@ -158,7 +158,7 @@ class FruitDataService: FruitDataServiceProtocol   {
         }
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
-        let dataTask = URLSession.shared.dataTask(with: url)
+        let dataTask = URLSession.shared.dataTask(with: request)
         print("GET request made to the following URL: \(url)")
         dataTask.resume()
     }
