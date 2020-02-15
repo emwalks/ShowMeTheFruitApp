@@ -9,7 +9,7 @@
 import Foundation
 
 class FruitDetailPresenter: FruitDetailPresenterProtocol {
-    
+
     private weak var fruitDetailViewDelegate: FruitDetailViewDelegateProtocol?
     private let fruitDataService: FruitDataServiceProtocol
     private var fruitReceivedFromNavigator: String = ""

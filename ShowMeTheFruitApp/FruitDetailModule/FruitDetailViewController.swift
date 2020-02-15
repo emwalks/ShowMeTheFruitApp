@@ -11,7 +11,7 @@ import UIKit
 
 class FruitDetailViewController: UIViewController, FruitDetailViewDelegateProtocol {
     
-    private  var fruitDetailPresenter : FruitDetailPresenter?
+    internal var fruitDetailPresenter : FruitDetailPresenter?
     private var viewWillAppearDate: Date?
     private var fruitPrice: Double = -1.00
     private var fruitWeight: Double = -1.00
@@ -52,7 +52,6 @@ class FruitDetailViewController: UIViewController, FruitDetailViewDelegateProtoc
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fruitDetailPresenter = FruitDetailPresenter(fruitDetailViewDelegate: self, fruitDataService: FruitDataService())
         priceLabel.accessibilityIdentifier = "pricePresented"
         weightLabel.accessibilityIdentifier = "weightPresented"
     }

@@ -11,7 +11,7 @@ import Foundation
 class MockFruitDetailView: FruitDetailViewDelegateProtocol {
     var fruitTypeFromSegue: String = ""
     
-    var fruitDetailPresenter : FruitDetailPresenter!
+    var fruitDetailPresenter : FruitDetailPresenter?
     var fruitSelected: FruitItem? = nil
     
     var fruitPriceLabel: Double = -1

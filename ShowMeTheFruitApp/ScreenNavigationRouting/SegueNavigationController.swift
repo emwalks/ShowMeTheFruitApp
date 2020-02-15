@@ -20,9 +20,11 @@ class SegueNavigationController: ScreenNavigationControllerProtocol {
     func displayFruitDetailView(_ type: String) {
         
         if let newViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FruitDetailsView") as?  FruitDetailViewController {
-              newViewController.fruitTypeFromSegue = type
-              viewController.navigationController?.pushViewController(newViewController, animated: true)
-          }
+            newViewController.fruitTypeFromSegue = type
+            newViewController.fruitDetailPresenter = FruitDetailPresenter(fruitDetailViewDelegate: newViewController, fruitDataService: FruitDataService())
+            
+            viewController.navigationController?.pushViewController(newViewController, animated: true)
+        }
     }
     
 }
