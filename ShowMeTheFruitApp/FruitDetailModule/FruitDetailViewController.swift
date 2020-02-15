@@ -11,7 +11,7 @@ import UIKit
 
 class FruitDetailViewController: UIViewController, FruitDetailViewDelegateProtocol {
     
-    internal var fruitDetailPresenter : FruitDetailPresenter?
+    internal var fruitDetailPresenter : FruitDetailPresenterProtocol?
     private var viewWillAppearDate: Date?
     private var fruitPrice: Double = -1.00
     private var fruitWeight: Double = -1.00

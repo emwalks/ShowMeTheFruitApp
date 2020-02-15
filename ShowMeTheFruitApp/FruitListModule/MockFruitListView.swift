@@ -9,8 +9,8 @@
 import Foundation
 
 class MockFruitListView: FruitListViewDelegateProtocol {
-    
-    var fruitListPresenter: FruitListPresenter!
+        
+    var fruitListPresenter: FruitListPresenterProtocol?
     fileprivate var arrayOfFruitTypes: Array<String?> = []
     
     var fruitTypeLabelForIndex1: String = ""

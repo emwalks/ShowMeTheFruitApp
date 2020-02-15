@@ -9,9 +9,10 @@
 import Foundation
 
 class MockFruitDetailView: FruitDetailViewDelegateProtocol {
+    var fruitDetailPresenter: FruitDetailPresenterProtocol?
+    
     var fruitTypeFromSegue: String = ""
     
-    var fruitDetailPresenter : FruitDetailPresenter?
     var fruitSelected: FruitItem? = nil
     
     var fruitPriceLabel: Double = -1

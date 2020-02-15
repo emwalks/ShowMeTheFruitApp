@@ -10,8 +10,8 @@ import UIKit
 import Foundation
 
 class FruitListTableViewController: UITableViewController, FruitListViewDelegateProtocol {
+    var fruitListPresenter: FruitListPresenterProtocol?
     
-    private var fruitListPresenter: FruitListPresenterProtocol?
     private var viewWillAppearDate: Date?
     private var arrayOfFruitTypes: Array<String?> = [] {
         didSet {
@@ -31,8 +31,6 @@ class FruitListTableViewController: UITableViewController, FruitListViewDelegate
         
         //this view should be passive? Should it know about the actual fruitDataService? Or even the presenter? 🧐
         fruitListPresenter = FruitListPresenter(fruitListViewDelegate: self, fruitDataService: FruitDataService(), screenNavigationController: SegueNavigationController(self))
-        
-        
         tableView.accessibilityIdentifier = "FruitListTable"
         tableView.refreshControl = refreshData
         
@@ -49,8 +47,8 @@ class FruitListTableViewController: UITableViewController, FruitListViewDelegate
         super.viewDidAppear(animated)
         if let viewWillAppearDate = viewWillAppearDate {
             fruitListPresenter?.sendDisplayStatistics(timeTaken: Date().timeIntervalSince(viewWillAppearDate))
-                self.viewWillAppearDate = nil
-            }
+            self.viewWillAppearDate = nil
+        }
     }
     
     lazy private var refreshData: UIRefreshControl? = {

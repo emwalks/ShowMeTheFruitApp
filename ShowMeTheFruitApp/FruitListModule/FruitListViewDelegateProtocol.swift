@@ -9,5 +9,6 @@
 import Foundation
 
 protocol FruitListViewDelegateProtocol: class {
+    var fruitListPresenter: FruitListPresenterProtocol? { get set }
     func setFruit(arrayOfFruitTypes: Array<String?>)
 }

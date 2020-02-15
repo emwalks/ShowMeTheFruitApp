@@ -15,7 +15,10 @@ class SegueNavigationController: ScreenNavigationControllerProtocol {
     
     init(_ viewController: UIViewController) {
         self.viewController = viewController
+
     }
+    
+    //to implement the fruitListPresenter being passed from here to VC would need to add a coordinator and start screen navigation from app delegate
     
     func displayFruitDetailView(_ type: String) {
         
