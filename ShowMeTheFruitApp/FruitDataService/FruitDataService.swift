@@ -159,7 +159,7 @@ class FruitDataService: FruitDataServiceProtocol   {
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         let dataTask = URLSession.shared.dataTask(with: request)
-        print("GET request made to the following URL: \(url)")
+        print("GET request made to the following URL: \(request)")
         dataTask.resume()
     }
     

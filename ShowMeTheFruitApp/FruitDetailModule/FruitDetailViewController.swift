@@ -15,6 +15,7 @@ class FruitDetailViewController: UIViewController, FruitDetailViewDelegateProtoc
     private var viewWillAppearDate: Date?
     private var fruitPrice: Double = -1.00
     private var fruitWeight: Double = -1.00
+    //should this be internal?
     var fruitTypeFromSegue: String = ""
     
     @IBOutlet weak var fruitLabel: UILabel! {
@@ -39,6 +40,9 @@ class FruitDetailViewController: UIViewController, FruitDetailViewDelegateProtoc
         }
     }
     
+    //should this happen in presenter? model should not be passed to view
+    //refactor could be to do logic in presenter and hand the 3 individual properties through the function
+    // func setFruitDetail(fruit type: String, fruitPrice: Double, fruitWeight: Double)
     func setFruitDetail(fruitSelected: FruitItem?) {
         self.fruitTypeFromSegue = fruitSelected!.typeCapital
         self.fruitPrice = fruitSelected!.priceInPounds
