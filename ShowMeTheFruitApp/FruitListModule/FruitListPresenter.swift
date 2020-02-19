@@ -24,6 +24,7 @@ class FruitListPresenter: FruitListPresenterProtocol {
     
     
     func showFruitList() {
+        // this is a trailing closure
         fruitDataService.getFruits { [weak self] result  in
             
             var arrayOfFruitTypes: Array<String?> = []

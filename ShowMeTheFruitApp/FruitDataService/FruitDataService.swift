@@ -16,14 +16,15 @@ enum FruitDataServiceError : Error {
 class FruitDataService: FruitDataServiceProtocol   {
     
     static private let shared = FruitDataService()
-    public let urlConfiguration = URLSessionConfiguration.default
-    public var urlSession: URLSession?
+    //not used after a refactor
+//    public let urlConfiguration = URLSessionConfiguration.default
+//    public var urlSession: URLSession?
     
     private let fruitDataURL = "https://raw.githubusercontent.com/fmtvp/recruit-test-data/master/data.json"
     private var listOfFruits: [FruitItem]?
     private var foundFruitItem: FruitItem?
     //timeInterval is in units of seconds
-    private var timeInterval: TimeInterval?
+   // private var timeInterval: TimeInterval?
     
     init() {}
     
@@ -69,14 +70,16 @@ class FruitDataService: FruitDataServiceProtocol   {
         }
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
-        let dataTask = URLSession.shared.dataTask(with: request) { (data, response, error) in
+        //should this have a capture list?
+        //should use request not url
+        let dataTask = URLSession.shared.dataTask(with: request) { [weak self] (data, response, error) in
             
             guard let jsonData = data else {
-                let loadEventURL = self.loadEvent(timeTaken: Date().timeIntervalSince(fetchRequestStartTime))
-                self.sendStatistics(event: loadEventURL)
+                let loadEventURL = self?.loadEvent(timeTaken: Date().timeIntervalSince(fetchRequestStartTime))
+                self?.sendStatistics(event: loadEventURL!)
                 callback(.failure(.noFruitDataAvailable))
-                let errorEventURL = self.errorEvent(errorDescription: "No fruit data available")
-                self.sendStatistics(event: errorEventURL)
+                let errorEventURL = self?.errorEvent(errorDescription: "No fruit data available")
+                self?.sendStatistics(event: errorEventURL!)
                 return
             }
             
@@ -85,15 +88,15 @@ class FruitDataService: FruitDataServiceProtocol   {
                 let decoder = JSONDecoder()
                 let fruitsResponse = try decoder.decode(FruitData.self, from: jsonData)
                 let fruits = fruitsResponse.fruit
-                let loadEventURL = self.loadEvent(timeTaken: Date().timeIntervalSince(fetchRequestStartTime))
-                self.sendStatistics(event: loadEventURL)
+                let loadEventURL = self?.loadEvent(timeTaken: Date().timeIntervalSince(fetchRequestStartTime))
+                self!.sendStatistics(event: loadEventURL!)
                 callback(.success(fruits))
             } catch {
-                let loadEventURL = self.loadEvent(timeTaken: Date().timeIntervalSince(fetchRequestStartTime))
-                self.sendStatistics(event: loadEventURL)
+                let loadEventURL = self?.loadEvent(timeTaken: Date().timeIntervalSince(fetchRequestStartTime))
+                self!.sendStatistics(event: loadEventURL!)
                 callback(.failure(.fruitDataFailedProcessing))
-                let errorEventURL = self.errorEvent(errorDescription: "Fruit data processing failed")
-                self.sendStatistics(event: errorEventURL)
+                let errorEventURL = self?.errorEvent(errorDescription: "Fruit data processing failed")
+                self!.sendStatistics(event: errorEventURL!)
             }
         }
         dataTask.resume()
@@ -158,6 +161,7 @@ class FruitDataService: FruitDataServiceProtocol   {
         }
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
+        //should use request
         let dataTask = URLSession.shared.dataTask(with: request)
         print("GET request made to the following URL: \(request)")
         dataTask.resume()
